@@ -1,0 +1,299 @@
+:root{
+  --darkblue: #101627; /*#131531*/
+  --blue3: #496C99;
+  --blue2: #96ABC6;
+  --blue1: #BBC9DA;
+  --red5: #B11428;
+  --red4: #ca3e1c;
+  --red3: #ce5739;
+  --red2: #da8671;
+  --red1: #FFC6B2;
+  --yellow2: #cf9b4c;
+  --yellow1: #e7cda6;
+  --grey2: #989898;
+  --grey1: #D9D9D9;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  background-color: var(--darkblue) !important;
+  color: var(--grey2);
+  font-size: .8rem;
+}
+.chart {
+  align-content: center;
+}
+.mapchart{
+  margin-top: 40px;
+  align-self: start;
+}
+
+.info{
+  margin-left: 20px;
+  color: var(--red2);
+  height: 100px;
+}
+
+/* head */
+.heading {
+  justify-self: center;
+  font-size: 30px;
+  margin: 5rem 0 0.5rem 0;
+}
+.header {
+  color: white;
+  font-weight: bold;
+  font-size: 26px;
+  align-self: start;
+  margin-bottom: 1rem;
+}
+.subheader {
+  color: rgb(185, 185, 185);
+  font-size: .8rem;
+}
+
+.map-state-highlighted {
+  opacity: 40%;
+}
+
+
+/* slider */
+
+#year-filter::-webkit-slider-thumb {
+  background: var(--grey2) ;
+} 
+#year-filter::-moz-range-thumb {
+  background: var(--grey2) ;
+} 
+
+/* scroller*/
+#graphic{
+  height: 1700px; 
+  margin-bottom: 30px;
+}
+
+ #sections {
+position: relative;
+display: inline-block;
+width: 250px;
+top: -200px;
+z-index: 90;
+padding-bottom: 100px;
+}
+
+.step {
+margin-bottom: 150px;
+width: 350px; 
+height:200px;
+
+}
+
+
+#vis {
+display: inline-block;
+position: sticky;
+top : 20%;
+z-index: 1;
+margin-left: 650px;
+right: 60px;
+opacity: 1.0
+} 
+.title{
+color: var(--grey1);
+font-size: 16px;
+font-weight: bold;
+margin-bottom: 10px;
+}
+/* #vislegend {
+display: inline-block;
+position: sticky;
+top : 150px;
+z-index: 1;
+margin-left: 640px;
+right: 60px;
+opacity: 1.0
+}  */
+#storyTitle{
+  font-size: 0.8rem;
+  margin-top: 50px;
+}
+
+#extra-space{
+
+width: 350px; 
+height:50px;
+
+}
+
+
+h2 {
+  font-family: 'Roboto', sans-serif !important;
+  color: white;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  margin-right: -0.3em !important;
+  text-align: left;
+}
+
+h3 {
+  font-family: 'Roboto', sans-serif !important;
+  color: white;
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2em !important;
+  margin-bottom: 30px;
+  margin-right: -0.2em !important;
+  text-align: left;
+}
+h3.cursive {
+  font-family: 'Sacramento', cursive !important;
+  font-weight: 300 !important;
+}
+
+em {
+  color: var(--red2);
+}
+
+/* Vertical Navigation Bar*/
+
+.cd-section {
+  display: table;
+  width: 100%;
+  height: 100vh;
+}
+
+#cd-vertical-nav a {
+  color: #ffffff;
+  text-decoration: none;
+
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* No Touch devices */
+.cd-nav-trigger {
+  display: none;
+}
+
+#cd-vertical-nav {
+  position: fixed;
+  left:20px;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+#cd-vertical-nav li {
+  text-align: left;
+
+}
+#cd-vertical-nav a {
+  display: inline-block;
+  /* prevent weird movements on hover when you use a CSS3 transformation - webkit browsers */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+}
+#cd-vertical-nav a {
+  display: inline-block;
+  /* prevent weird movements on hover when you use a CSS3 transformation - webkit browsers */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+}
+#cd-vertical-nav a:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#cd-vertical-nav a span {
+  float: left;
+  display: inline-block;
+  -webkit-transform: scale(0.6);
+  -moz-transform: scale(0.6);
+  -ms-transform: scale(0.6);
+  -o-transform: scale(0.6);
+  transform: scale(0.6);
+}
+#cd-vertical-nav a:hover span {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  opacity :0.8;
+}
+#cd-vertical-nav a:hover .cd-label {
+  opacity: 1;
+  z-index: 0;
+}
+#cd-vertical-nav a.is-selected .cd-dot {
+  background-color: white;
+  opacity: 1;
+}
+.cd-dot {
+  position: relative;
+  top: 8px;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  -webkit-transition: -webkit-transform 0.2s, background-color 0.5s;
+  -moz-transition: -moz-transform 0.2s, background-color 0.5s;
+  transition: transform 0.2s, background-color 0.5s;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  opacity: 0.1;
+}
+
+#cd-vertical-nav .cd-label {
+  position: relative;
+  color: white;
+  font-size: 12px;
+  padding-top: 10px;
+  padding-left: 12px;
+  line-height: 6px ;
+  font-size: 0.875rem;
+  -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+  -moz-transition: -moz-transform 0.2s, opacity 0.2s;
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 0;
+  -webkit-transform-origin: 100% 50%;
+  -moz-transform-origin: 100% 50%;
+  -ms-transform-origin: 100% 50%;
+  -o-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+  z-index:0;
+}
+
+.line {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 1px;
+  background: var(--grey1);
+}
+
+.d3-geomap text {
+  fill: var(--grey2);
+  font-size: 10px;
+}
+
+a{
+  color: var(--red2);
+}
+
+.fa{
+  size: 30px;
+}
