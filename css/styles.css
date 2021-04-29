@@ -20,9 +20,11 @@ body {
   color: var(--grey2);
   font-size: .8rem;
 }
-#section4{
-  font-size: .9rem;
+.notextdec{
   font-family: sans-serif !important;
+}
+
+#section4{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,7 +157,7 @@ height:50px;
 }
 
 
-h2 {
+h2.cursive {
   font-family: 'Roboto', sans-serif !important;
   color: white;
   font-size: 48px !important;
@@ -165,7 +167,7 @@ h2 {
   text-align: left;
 }
 
-h3 {
+/* h3 {
   font-family: 'Roboto', sans-serif !important;
   color: white;
   font-size: 36px !important;
@@ -174,7 +176,7 @@ h3 {
   margin-bottom: 30px;
   margin-right: -0.2em !important;
   text-align: left;
-}
+} */
 h3.cursive {
   font-family: 'Sacramento', cursive !important;
   font-weight: 300 !important;
