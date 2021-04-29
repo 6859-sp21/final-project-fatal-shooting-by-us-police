@@ -24,8 +24,8 @@
     crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-    <script src="./index.js"></script>
-    <script src="./libraries/color-legend.js"></script>
+    <script src="libraries/index.js"></script>
+    <script src="libraries/color-legend.js"></script>
     <script src="libraries/scroller.js"></script>
     <script src="libraries/sections.js"></script>
 </head>
@@ -37,6 +37,7 @@
             <li><a href="#section1" data-number="1"><span class="cd-dot"></span><span class="cd-label">Home</span></a></li>
             <li><a href="#section2" data-number="2"><span class="cd-dot"></span><span class="cd-label">Grid Map</span></a></li>
             <li><a href="#section3" data-number="3"><span class="cd-dot"></span><span class="cd-label">Analysis</span></a></li>
+            <li><a href="#section4" data-number="4"><span class="cd-dot"></span><span class="cd-label">Rate</span></a></li>
         </ul>
     </nav>
 
@@ -128,6 +129,42 @@
                   <!-- <div id="extra-space"></div> -->
         	</div>
     	</div>
+    </section>
+
+    <section id="section4" class="cd-section nav-section">
+        <div class="container-flux" style="margin-left: 7%;margin-right: 3%;">
+            <h3 class="rate">DEATH RATE BY RACE</h3>
+            <h4 style="color: var(--red2);">Racism as exposure to premature death</h4>
+            <br><div >>> Hover over the legend >> Click the state</div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <br>
+                    <div  style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+                        <div id="gridmap"></div>
+                        <div>Rate of police-caused death by race (2008-2019)</div>
+                    </div>
+                </div>
+
+                <div class="col-sm-7" style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+                    <div style="display: inline-block;">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-outline-secondary btn-sm active">
+                              <input type="checkbox" name="options" id="checkBlack" autocomplete="off" checked> Black
+                            </label>
+                            <label class="btn btn-outline-secondary btn-sm active">
+                              <input type="checkbox" name="options" id="checkWhite" autocomplete="off" checked> White
+                            </label>
+                            <label class="btn btn-outline-secondary btn-sm active">
+                              <input type="checkbox" name="options" id="checkHispanic" autocomplete="off" checked> Hispanic
+                            </label>
+                            <label class="btn btn-outline-secondary btn-sm active">
+                                <input type="checkbox" name="options" id="checkAverage" autocomplete="off" checked> Average
+                              </label>
+                          </div>
+                    </div><br>
+                    <div id="lineChart"></div>
+                </div> 
+           </div>
     </section>
 
     <section id="section00">
@@ -403,7 +440,9 @@
     </script>
 	
     <script src="libraries/popper.min.js"></script>
-    <!-- AOS must be included last -->
+    <script src="libraries/gridmap.js"></script>
+    <script src="libraries/cardMap.js"></script>
+    <script src="libraries/lineChart.js"></script>
     <script src="libraries/aos.js"></script>
     <script src="libraries/animate.js"></script>
 </body>

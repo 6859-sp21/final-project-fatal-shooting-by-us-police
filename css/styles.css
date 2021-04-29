@@ -20,6 +20,32 @@ body {
   color: var(--grey2);
   font-size: .8rem;
 }
+.section4{
+  font-family: sans-serif !important;
+}
+
+.rate{
+  margin-top: 6%; 
+  font-weight: 700;
+  color: whitesmoke;
+  margin-bottom: 0rem;
+}
+
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn-outline-secondary:hover {
+  color: var(--grey2);
+  background-color: var(--darkblue);
+  border-color: var(--grey2);
+}
+.btn-outline-secondary:not(:disabled):not(.disabled).active {
+  color: var(--red2); 
+  background-color: var(--darkblue);
+  border-color: var(--red2);
+}
 .chart {
   align-content: center;
 }
