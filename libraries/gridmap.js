@@ -439,7 +439,8 @@ class GridMap {
         if (s.length > 0) {
             g
                 .append("text")
-                .style("fill","var(--grey1)")
+                .attr("font-size", "9pt")
+                .style("fill","var(--grey2)")
                 .attr("text-anchor", "end")
                 .attr("alignment-baseline", "hanging")
                 .attr("transform", `translate(${w * 9},0)`)
@@ -452,11 +453,11 @@ class GridMap {
             .attr("font-size", "8pt")
             .attr("transform", (d, i) => `translate(${i * w},0)`)
             .call(g => g.append("rect")
-                .attr("y", "1.2em")
+                .attr("y", "1.3em")
                 .attr("fill", d => this._c(d.floor))
                 .attr("width", w).attr("height", "1.5em"))
             .call(g => g.append("text")
-                .style("fill","var(--grey1)")
+                .style("fill","var(--grey2)")
                 .attr("dy", "4em")
                 .text(d => d3.format(this._style.shortFormat)(d.floor)));
 

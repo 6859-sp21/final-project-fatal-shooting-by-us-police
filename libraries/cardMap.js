@@ -83,7 +83,7 @@ const grid_svg = d3.select("#gridmap").append("svg")
 const grid_g = grid_svg.append("g").attr("transform", "translate(25,0)");  
 const gmap = new GridMap(grid_g)
     .size([wmap, hmap])      
-    .style({sizeByValue: false, legendTitle: "Death Rate", shape: "square"})      
+    .style({sizeByValue: true, legendTitle: "Death Rate", shape: "square"})      
     .field({ code: "code", name: "", total: ["White"]})
     .cellPalette(d3.interpolateOrRd)
     .mapGrid(usmap)    
