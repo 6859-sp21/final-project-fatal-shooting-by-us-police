@@ -1,6 +1,6 @@
 
 const test_rate = [
-    {state: 'Average', White: 0.7, Black: 2.7, Hispanic: 1.7, year: 2008},
+    {state: 'Average', White: 0.7, Black: 2.7, Hispanic: 1.1, year: 2008},
     {state: 'Average', White: 0.4, Black: 2.7, Hispanic: 1.1, year: 2009},
     {state: 'Average', White: 1.1, Black: 3.0, Hispanic: 1.4, year: 2010},
     {state: 'Average', White: 0.4, Black: 2.7, Hispanic: 1.1, year: 2011},
@@ -55,7 +55,7 @@ var width_line = fullWidth - margin_line.right - margin_line.left;
 var myColor = d3.scaleOrdinal()
     .domain(test_rate)
     .range(d3.schemeSet2);
-var svg = d3.select("#lineChart")
+var linechart = d3.select("#lineChart")
     .data(test_rate)
     .append("svg")
         .attr("width",fullWidth)
@@ -97,14 +97,14 @@ function update_line(){
     console.log(dataReady);
 
     //remove
-    svg.selectAll(".myLines").remove();
-    svg.selectAll("g").remove();
+    linechart.selectAll(".myLines").remove();
+    linechart.selectAll("g").remove();
 
     // Add X axis   
     var x = d3.scaleLinear()
         .domain([2008, 2019])
         .range([ 0, width_line ]);
-    svg.append("g")
+    linechart.append("g")
         .attr("transform", "translate(0," + height_line + ")")
         .call(d3.axisBottom(x));
 
@@ -112,28 +112,27 @@ function update_line(){
     var y = d3.scaleLinear()
         .domain([0,d3.max(dataReady, d => d3.max(d.values,e => e.value))]) ///max y value
         .range([ height_line, 0 ]);
-    svg.append("g")
+    linechart.append("g")
         .call(d3.axisLeft(y));
 
     // each line
     var line = d3.line()
         .x(d => x(+d.year))
         .y(d => y(+d.value))
-    
-    
-    svg.selectAll(".myLines")
-        .data(dataReady)
-        .enter()
-        .append("path")
-            .attr("d", d => line(d.values))
-            .attr("stroke", d =>  myColor(d.name))//d.values[0].state === "Average" ? "var(--grey2)" :
-            .style("stroke-width", 2)
-            .style("fill", "none")
-            .attr("class", "myLines")
-            .style("opacity", d => d.values[0].state === "Average" ? 0.4 : 1);
+
+    linechart.selectAll(".myLines")
+    .data(dataReady)
+    .enter()
+    .append("path")
+        .attr("d", d => line(d.values))
+        .attr("stroke", d =>  myColor(d.name))//d.values[0].state === "Average" ? "var(--grey2)" :
+        .style("stroke-width", 2)
+        .style("fill", "none")
+        .attr("class", "myLines")
+        .style("opacity", d => d.values[0].state === "Average" ? 0.4 : 1);
 
     // category label of each line
-    svg.selectAll(".myLabels")
+    linechart.selectAll(".myLabels")
         .data(dataReady)
         .enter()
             .append('g')
@@ -146,11 +145,10 @@ function update_line(){
             .style("font-size", 15)
             .attr("class", "myLabels")
             .style("opacity", d => d.value.state === "Average" ? 0.4 : 1);
-
     /* 
         mouse over effects: vertical line, circle and text
     */
-    var mouseG = svg.append("g")
+        var mouseG = linechart.append("g")
         .attr("class", "mouse-over-effects");
     // vertical line
     mouseG.append("path") 
@@ -187,7 +185,7 @@ function update_line(){
         .on('mouseover', mouseover)
         .on('mousemove', mousemove)
         .on('mouseout', mouseout);
-        
+    
     function mouseover() {
         d3.select(".mouse-line")
             .style("opacity", "1");
@@ -196,7 +194,6 @@ function update_line(){
         d3.selectAll(".mouse-per-line text")
             .style("opacity", "1");
     }
-
     function mousemove() {
         var mouse = d3.mouse(this);
         d3.selectAll(".mouse-per-line") // vertical line, circle and text
@@ -219,6 +216,7 @@ function update_line(){
                 return "translate(" + x(d.values[idx].year) + "," + y(d.values[idx].value) + ")";                       
             });
     }
+
     function mouseout() {
         d3.select(".mouse-line")
             .style("opacity", "0");
