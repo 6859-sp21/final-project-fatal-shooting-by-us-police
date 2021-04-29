@@ -20,12 +20,15 @@ body {
   color: var(--grey2);
   font-size: .8rem;
 }
-.section4{
+#section4{
+  font-size: .9rem;
   font-family: sans-serif !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .rate{
-  margin-top: 6%; 
   font-weight: 700;
   color: whitesmoke;
   margin-bottom: 0rem;
