@@ -24,7 +24,7 @@ const grid_svg = d3.select("#gridmap").append("svg")
     .attr("width", wmap)
     .attr("height", hmap);    
 
-const grid_g = grid_svg.append("g").attr("transform", "translate(10,20)");  
+const grid_g = grid_svg.append("g").attr("transform", "translate(30,20)");  
 
 // Make the slider
 var dataTime = d3.range(0, 12).map(function(d) {
@@ -39,7 +39,7 @@ var sliderTime = d3
     .width(wmap-50)
     .tickValues(dataTime)
     .tickFormat(d3.format("d"))
-    .default(2019)
+    .default(2008)
 var gTime = d3
     .select('div#slider')
     .append("center")
@@ -78,13 +78,13 @@ d3.csv("data/raceRate.csv").then(function (raw_data) {
         dataReady = dataReady.concat(dataByYear(year));
     };
 
-    let data = dataReady.filter(d => d.code !== 'Average' && d.year === 2019);
+    let data = dataReady.filter(d => d.code !== 'Average' && d.year === 2008);
 
     function render (data){
         grid_g.selectAll('g').remove();
         const gmap = new GridMap(grid_g)
             .size([wmap-50, hmap])      
-            .style({sizeByValue: false, showMapLegend: false, shape: "square"})      
+            .style({sizeByValue: true, showMapLegend: false, shape: "circle"})      
             .field({ code: "code", name: "", total: ["Total"]})
             .cellPalette(d3.interpolateOrRd)
             .mapGrid(usmap)    

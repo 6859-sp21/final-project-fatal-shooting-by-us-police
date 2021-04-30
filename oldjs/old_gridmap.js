@@ -1,4 +1,4 @@
-﻿// https://github.com/analyzer2004/gridmap
+// https://github.com/analyzer2004/gridmap
 // Copyright 2020 Eric Lo
 class GridMap {
     constructor(container) {
@@ -310,7 +310,7 @@ class GridMap {
                 .attr("cx", size - shift ? 0 : bandwidth.hx).attr("cy", size - shift ? 0 : bandwidth.hy);
 
             if (style.sizeByValue)
-                circle.attr("r", d => d.r >= size ? d.r: size);
+                circle.attr("r", d => d.r);
             else
                 circle.attr("r", d => size);
 
