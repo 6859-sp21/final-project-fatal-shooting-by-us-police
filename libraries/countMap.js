@@ -217,7 +217,7 @@ const stateCodeToFips =
 
                     const stateName = fipsToStateCode[d.properties.fips.slice(2)];
 
-                    d3.selectAll("rect")
+                    svg.selectAll("rect")
                         .filter(d => d.state !== stateName)
                         .attr('opacity', '100%');
                     d3.selectAll('.unit').filter((d2) => d !== d2).attr('opacity', '100%');
