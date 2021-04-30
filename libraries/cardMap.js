@@ -39,7 +39,7 @@ var sliderTime = d3
     .width(wmap-50)
     .tickValues(dataTime)
     .tickFormat(d3.format("d"))
-    .default(2008)
+    .default(2019)
 var gTime = d3
     .select('div#slider')
     .append("center")
@@ -78,7 +78,7 @@ d3.csv("data/raceRate.csv").then(function (raw_data) {
         dataReady = dataReady.concat(dataByYear(year));
     };
 
-    let data = dataReady.filter(d => d.code !== 'Average' && d.year === 2008);
+    let data = dataReady.filter(d => d.code !== 'Average' && d.year === 2019);
 
     function render (data){
         grid_g.selectAll('g').remove();

@@ -202,7 +202,8 @@ class GridMap {
 
     _initColors() {
         if (this._chartData) {
-            const ext = d3.extent(this._chartData.map(d => d.total)); 
+            // const ext = d3.extent(this._chartData.map(d => d.total)); 
+            const ext = [0,9]
             this._c = d3.scaleSequential(this._cellPalette).domain(ext);
             this._t = d3.scaleOrdinal(['black']).domain(ext);
             if (this._contains.values) this._ov = d3.scaleOrdinal(this._overlayPalette).domain(this._seq(this._field.values.length));
