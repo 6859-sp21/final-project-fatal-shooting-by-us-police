@@ -328,3 +328,7 @@ a{
 .fa{
   size: 30px;
 }
+
+.slider text {
+  fill: white;;
+}

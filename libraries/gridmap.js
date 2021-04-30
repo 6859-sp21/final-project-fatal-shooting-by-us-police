@@ -202,7 +202,7 @@ class GridMap {
 
     _initColors() {
         if (this._chartData) {
-            const ext = d3.extent(this._chartData.map(d => d.total)); //**0.9 */
+            const ext = d3.extent(this._chartData.map(d => d.total**0.7)); //****0.65 */
             this._c = d3.scaleSequential(this._cellPalette).domain(ext);
             this._t = d3.scaleOrdinal(['black']).domain(ext);
             if (this._contains.values) this._ov = d3.scaleOrdinal(this._overlayPalette).domain(this._seq(this._field.values.length));
@@ -332,7 +332,8 @@ class GridMap {
         if (short || this._showLabel) tg.call(g => g.append("text").text(d => short ? d.code : d.state));
         tg.call(g => g.append("text")
             .attr("dy", short || this._showLabel ? "1em" : "")
-            .text(d => d.total ? d3.format(short ? this._style.shortFormat : this._style.longFormat)(d.total) : "---"));
+            .text(d => d3.format(short ? this._style.shortFormat : this._style.longFormat)(d.total)));
+            // .text(d => d.total ? d3.format(short ? this._style.shortFormat : this._style.longFormat)(d.total) : "---"));
     }
 
     _attachEvents(cells) {

@@ -53,7 +53,6 @@ const stateCodeToFips =
 
         var myColorMain = d3.scaleOrdinal()
             .range(['#cb181d','#fb6a4a','#fc9272','#fcbba1','#fee0d2'])
-            // .range(['#B11428','#496C99','#D2963F','#da8671','#96ABC6'])//,'#ddc49e','#FFC6B2','#BBC9DA'
             .domain(Array.from(Array(countTop).keys()));
 
         legend({color: myColor, width: 330, svgIn: d3.select('#legendddd')});// title: "Number of Killed Citizens",

@@ -16,76 +16,88 @@ const usmap = [[0, 0, ""], [1, 0, ""], [2, 0, ""], [3, 0, ""], [4, 0, ""], [5, 0
                 [6, 7, ""], [7, 7, ""], [8, 7, ""], [9, 7, "FL"], [10, 7, ""], [11, 7, ""]]
                 .map(d => ({ col: d[0], row: d[1], code: d[2] }));
 
-const usdeath = [
-    { code: "AK", name: "", White: 2.2, Black: 0.3, Hispanic: 0},
-    { code: "AL", name: "", White: 6.3, Black: 3.1, Hispanic: 0.1},
-    { code: "AR", name: "", White: 4.6, Black: 2.6, Hispanic: 0},
-    { code: "AZ", name: "", White: 10.9, Black: 1.7, Hispanic: 8.3},
-    { code: "CA", name: "", White: 2.21, Black: 1.22, Hispanic: 3.16},
-    { code: "CO", name: "", White: 9.1, Black: 1.8, Hispanic: 4.8},
-    { code: "CT", name: "", White: 1.1, Black: 0.3, Hispanic: 0.6},
-    { code: "DC", name: "", White: 0.1, Black: 1.2, Hispanic: 0},
-    { code: "DE", name: "", White: 0.5, Black: 0.5, Hispanic: 0},
-    { code: "FL", name: "", White: 1.59, Black: 1.11, Hispanic: 5.1},
-    { code: "GA", name: "", White: 7.7, Black: 7.1, Hispanic: 0.9},
-    { code: "HI", name: "", White: 0.3, Black: 0.1, Hispanic: 0.1},
-    { code: "IA", name: "", White: 2.4, Black: 0.7, Hispanic: 0},
-    { code: "ID", name: "", White: 3.0, Black: .1, Hispanic: .5},
-    { code: "IL", name: "", White: 2.8, Black: 5.8, Hispanic: 1.3},
-    { code: "IN", name: "", White: 5.7, Black: 3.0, Hispanic: .4},
-    { code: "KS", name: "", White: 3.4, Black: .6, Hispanic: .8},
-    { code: "KY", name: "", White: 6.7, Black: 1.5, Hispanic: .3},
-    { code: "LA", name: "", White: 3.9, Black: 6.0, Hispanic: .1},
-    { code: "MA", name: "", White: 1.7, Black: .8, Hispanic: .7},
-    { code: "MD", name: "", White: 2.6, Black: 4.7, Hispanic: .3},
-    { code: "ME", name: "", White: 1.8, Black: .1, Hispanic: .1},
-    { code: "MI", name: "", White: 4.3, Black: 2.4, Hispanic: .2},
-    { code: "MN", name: "", White: 3.7, Black: 1.0, Hispanic: .3},
-    { code: "MO", name: "", White: 7.2, Black: 4.8, Hispanic: .3},
-    { code: "MS", name: "", White: 3.6, Black: 2.3, Hispanic: .1},
-    { code: "MT", name: "", White: 2.5, Black: 0, Hispanic: 0},
-    { code: "NC", name: "", White: 8.8, Black: 5.1, Hispanic: .8},
-    { code: "ND", name: "", White: .6, Black: 0, Hispanic: 0},
-    { code: "NE", name: "", White: 1.6, Black: .5, Hispanic: .2},
-    { code: "NH", name: "", White: 1.2, Black: 0, Hispanic: 0},
-    { code: "NJ", name: "", White: 2.1, Black: 3.0, Hispanic: .8},
-    { code: "NM", name: "", White: 2.6, Black: 1, Hispanic: 6.4},
-    { code: "NV", name: "", White: 3.9, Black: 1.5, Hispanic: 2.8},
-    { code: "NY", name: "", White: 3.5, Black: 4.6, Hispanic: .8},
-    { code: "OH", name: "", White: 8.4, Black: 5.6, Hispanic: .1},
-    { code: "OK", name: "", White: 10.0, Black: 3.2, Hispanic: .9},
-    { code: "OR", name: "", White: 6.3, Black: .7, Hispanic: .6},
-    { code: "PA", name: "", White: 4.7, Black: 4.2, Hispanic: .6},
-    { code: "RI", name: "", White: 1, Black: .2, Hispanic: .1},
-    { code: "SC", name: "", White: 5.0, Black: 2.7, Hispanic: .2},
-    { code: "SD", name: "", White: 1.0, Black: 0, Hispanic: 0},
-    { code: "TN", name: "", White: .89, Black: .21, Hispanic: .3},
-    { code: "TX", name: "", White: 1.75, Black: .99, Hispanic: 1.42},
-    { code: "UT", name: "", White: 3.6, Black: .7, Hispanic: 1.2},
-    { code: "VA", name: "", White: 4.5, Black: 4.0, Hispanic: 0.4},
-    { code: "VT", name: "", White: 0.7, Black: 0, Hispanic: 0},
-    { code: "WA", name: "", White: 6.6, Black: 2.1, Hispanic: 2.1},
-    { code: "WI", name: "", White: 5.6, Black: 2.0, Hispanic: 0.6},
-    { code: "WV", name: "", White: 3.7, Black: 0.8, Hispanic: 0},
-    { code: "WY", name: "", White: 0.9, Black: 0, Hispanic: 0.2},
-    ]
-
-/* Grid map */
-var mapState = null;
 const wmap = 550; 
-const hmap = 420; 
+const hmap = 400; 
 
 const grid_svg = d3.select("#gridmap").append("svg")
     .attr("font-size", "10pt")
     .attr("width", wmap)
     .attr("height", hmap);    
 
-const grid_g = grid_svg.append("g").attr("transform", "translate(25,0)");  
-const gmap = new GridMap(grid_g)
-    .size([wmap, hmap])      
-    .style({sizeByValue: false, legendTitle: "Death Rate", shape: "square"})      
-    .field({ code: "code", name: "", total: ["White"]})
-    .cellPalette(d3.interpolateOrRd)
-    .mapGrid(usmap)    
-    .data(usdeath)
-    .render();
+const grid_g = grid_svg.append("g").attr("transform", "translate(10,20)");  
+
+// Make the slider
+var dataTime = d3.range(0, 12).map(function(d) {
+    return 2008 + d;
+    });
+    
+var sliderTime = d3
+    .sliderBottom()
+    .min(d3.min(dataTime))
+    .max(d3.max(dataTime))
+    .step(1)
+    .width(wmap-50)
+    .tickValues(dataTime)
+    .tickFormat(d3.format("d"))
+    .default(2008)
+var gTime = d3
+    .select('div#slider')
+    .append("center")
+    .append('svg')
+    .attr('width', wmap)
+    .attr('height', 50)
+    .append('g')
+    .attr('transform', 'translate(15,10)')
+
+gTime.call(sliderTime); 
+
+// draw
+d3.csv("data/raceRate.csv").then(function (raw_data) {
+    function dataByYear (year){
+        return outputData = raw_data.map(d=>{
+            let white = "White"+year;
+            let black = "Black"+year;
+            let hispanic = "Hispanic"+year;
+            let total = "Total"+year;
+            return {
+                code: d.state,
+                name: d.location,
+                year: year,
+                White: +[d[white]],
+                Black: +[d[black]],
+                Hispanic: +[d[hispanic]],
+                Total: +[d[total]],
+            }
+        })
+    };
+
+    let yearArray = Array.from({length: 12}, (v, i) => i+2008);
+    let dataReady = [];
+    for (var i=0; i< yearArray.length; i++){
+        let year = yearArray[i];
+        dataReady = dataReady.concat(dataByYear(year));
+    };
+
+    let data = dataReady.filter(d => d.code !== 'Average' && d.year === 2008);
+
+    function render (data){
+        grid_g.selectAll('g').remove();
+        const gmap = new GridMap(grid_g)
+            .size([wmap-50, hmap])      
+            .style({sizeByValue: false, showMapLegend: false, shape: "square"})      
+            .field({ code: "code", name: "", total: ["Total"]})
+            .cellPalette(d3.interpolateOrRd)
+            .mapGrid(usmap)    
+            .data(data)
+            .render();
+    }
+    render(data);
+    sliderTime.on("onchange", val => {
+        let myYear = val
+        data = dataReady
+            .filter(d => d.code !== 'Average' && d.year === myYear);
+        render(data);
+    })
+});
+
+

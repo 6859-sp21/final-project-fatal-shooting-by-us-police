@@ -47,14 +47,14 @@ document.getElementById("checkHispanic").addEventListener("input", e=>{ update_l
 document.getElementById("checkAverage").addEventListener("input", e=>{update_line();});
 
 /* Line chart */
-var fullHeight = 350;
+var fullHeight = 400;
 var fullWidth = 750;
 var margin_line = {top: 20, right: 150, bottom: 20, left: 30};
 var height_line = fullHeight - margin_line.top - margin_line.bottom;
 var width_line = fullWidth - margin_line.right - margin_line.left;
 var myColor = d3.scaleOrdinal()
     .domain(test_rate)
-    .range(d3.schemeSet2);
+    .range([d3.schemeSet2[1],d3.schemeSet2[2],d3.schemeSet2[6]]);
 var linechart = d3.select("#lineChart")
     .data(test_rate)
     .append("svg")
@@ -142,7 +142,7 @@ function update_line(){
             .attr("x", 12) // shift the text a bit more right
             .text(d => d.value.state + " " + d.name)
             .style("fill", d => myColor(d.name))
-            .style("font-size", 15)
+            .style("font-size", 14)
             .attr("class", "myLabels")
             .style("opacity", d => d.value.state === "Average" ? 0.4 : 1);
     /* 

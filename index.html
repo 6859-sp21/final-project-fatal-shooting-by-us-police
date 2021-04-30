@@ -24,6 +24,7 @@
     crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/d3-simple-slider@1.10.1/dist/d3-simple-slider.min.js"></script>
     
 </head>
 
@@ -127,16 +128,17 @@
         <div class="container-flux flex-item" style="margin-left: 7%;margin-right: 3%;">
             <h2 class="rate">DEATH RATE BY RACE</h2>
             <h5 class="" style="color: var(--red2);">Racism as exposure to premature death</h5>
-            <br><div style="color: whitesmoke;">>> Hover over the legend >> Click the state</div>
+            <br>
+            <div style="color: whitesmoke;">>> Click the state</div>
             <div class="row">
                 <div class="col-sm-5">
                     <br>
                     <div  style="display: flex; flex-direction: column; align-items: center; justify-content: center">
                         <div id="gridmap" class="notextdec"></div>
-                        <div>Rate of police-caused death by race (2008-2019)</div>
+                        <div id="slider"></div>
                     </div>
                 </div>
-                <div class="notextdec col-sm-7" style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+                <div class="col-sm-7" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: -30px;">
                     <div style="display: inline-block;">
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-outline-secondary btn-sm active">
@@ -154,6 +156,8 @@
                           </div>
                     </div><br>
                     <div id="lineChart"></div>
+                    <br>
+                    <div>Rate of police-caused death by race (2008-2019)</div>
                 </div> 
            </div>
     </section>
@@ -177,7 +181,9 @@
         </div>
         <div id="extra-space"></div>
     </section>
-    <script></script>
+    <script>
+        var mapState = null;
+    </script>
 	<script src="libraries/index.js"></script>
     <script src="libraries/color-legend.js"></script>
     <script src="libraries/scroller.js"></script>
