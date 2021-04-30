@@ -202,7 +202,7 @@ class GridMap {
 
     _initColors() {
         if (this._chartData) {
-            const ext = d3.extent(this._chartData.map(d => d.total**0.7)); //****0.65 */
+            const ext = d3.extent(this._chartData.map(d => d.total)); 
             this._c = d3.scaleSequential(this._cellPalette).domain(ext);
             this._t = d3.scaleOrdinal(['black']).domain(ext);
             if (this._contains.values) this._ov = d3.scaleOrdinal(this._overlayPalette).domain(this._seq(this._field.values.length));
@@ -256,7 +256,7 @@ class GridMap {
             .join("g")
             .attr("text-anchor", "middle")
             .attr("opacity", this._style.transition ? 0 : this._fullOpacity)
-            .attr("fill", d => d.total ? this._c(d.total) : d.code ? this._style.defaultCellColor : "none");
+            .attr("fill", d => this._c(d.total));//d.total ? this._c(d.total) : d.code ? this._style.defaultCellColor : "none"
 
         if (this._style.transition)
             cells.attr("transform", d => `translate(${-this._bandwidth.x},${this._y(d.row)})`);
@@ -326,7 +326,7 @@ class GridMap {
         const tg = g.append("g")
             .attr("class", className)
             .attr("opacity", opacity)
-            .attr("fill", d => d.total ? short ? this._t(d.total) : "black" : this._style.defaultTextColor)
+            .attr("fill", d => 'black')//d.total ? short ? this._t(d.total) : "black" : this._style.defaultTextColor
             .attr("transform", `translate(${this._bandwidth.hx},${this._bandwidth.hy})`);
 
         if (short || this._showLabel) tg.call(g => g.append("text").text(d => short ? d.code : d.state));
