@@ -1,7 +1,7 @@
 
 
 // set the dimensions and margins of the graph
-var bpmargin = {top: 10, right: 30, bottom: 50, left: 70},
+var bpmargin = {top: 10, right: 30, bottom: 50, left: 90},
     width = 1000 - bpmargin.left - bpmargin.right,
     height = 600 - bpmargin.top - bpmargin.bottom;
 
@@ -87,7 +87,8 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     .domain(["Black", "White", "Hispanic"])
     .padding(.4);
   svg.append("g")
-    .attr("transform", "translate(-10, 0)")
+    .attr("transform", "translate(-20, 0)")
+    .style("font-size", "16px")
     .call(d3.axisLeft(y).tickSize(0))
     .select(".domain").remove()
 
@@ -98,14 +99,14 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     .domain([min,max])
     .range([0, width])
   svg.append("g")
-    .attr("transform", "translate(10," + height + ")")
+    .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).ticks(5))
     .select(".domain").remove()
   // console.log(min);  
   // console.log(max);  
   
   // Color scale
-  var myColor = d3.scaleSequential()
+  var myColor = d3.scaleSequentialSqrt()
     .interpolator(d3.interpolateYlOrRd)
     .domain([min,max])
 
@@ -119,12 +120,12 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .attr("text-anchor", "end")
       .attr("x", width)
       .attr("y", height + bpmargin.top + 30)
-      .text("Death Rate")
-      .style('fill', 'gray');
+      // .text("Death Rate")
+      .style('fill', 'var(--grey2)');
 
-  // Show the main vertical line
+  // Show the main horizontal line
   svg
-    .selectAll("vertLines")
+    .selectAll("horizLines")
     .data(sumstat)
     .enter()
     .append("line")
@@ -132,7 +133,8 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .attr("x2", function(d){return(x(d.value.max))})
       .attr("y1", function(d){return(y(d.key) + y.bandwidth()/2)})
       .attr("y2", function(d){return(y(d.key) + y.bandwidth()/2)})
-      .attr("stroke", "gray")
+      .attr("stroke", "var(--grey2)")
+      .attr("stroke-width", 2)
       .style("width", 40)
 
   // rectangle for the main box
@@ -145,9 +147,8 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
         .attr("width", function(d){ ; return(x(d.value.q3)-x(d.value.q1))}) //console.log(x(d.value.q3)-x(d.value.q1))
         .attr("y", function(d) { return y(d.key); })
         .attr("height", y.bandwidth() )
-        .attr("stroke", "black")
         .style("fill", "#fc8d62")
-        .style("opacity", 0.5)
+        .style("opacity", 0.4)
 
 
   // Show the median
@@ -157,10 +158,10 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     .enter()
     .append("line")
       .attr("y1", function(d){return(y(d.key))})
-      .attr("y2", function(d){return(y(d.key) + y.bandwidth()/2)})
+      .attr("y2", function(d){return(y(d.key) + y.bandwidth())})
       .attr("x1", function(d){return(x(d.value.median))})
       .attr("x2", function(d){return(x(d.value.median))})
-      .attr("stroke", "gray")
+      .attr("stroke", "var(--red3)")
       .style("width", 80)
 
   // create a tooltip
@@ -168,7 +169,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .append("div")
       .style("opacity", 0)
       .attr("class", "tooltip")
-      .style("font-size", "16px");
+      .style("font-size", "14px");
   // Three function that change the tooltip when user hover / move / leave a cell
   function mouseover (d) {
     bp_tooltip
@@ -176,7 +177,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .duration(200)
       .style("opacity", 1);
     bp_tooltip
-        .html("<span style='color:grey'> State: </span>" + d.state + "<span style='color:grey'> Death Rate: </span>" + d.R) // + d.Prior_disorder + "<br>" + "HR: " +  d.HR)
+        .html("<span style='color:grey'> State: </span>" + d.state + "<span style='color:grey'> Death Rate: </span>" + d3.format("(.1f")(d.R)) // + d.Prior_disorder + "<br>" + "HR: " +  d.HR)
         .style("left", (d3.event.pageX+30)  + "px")
         .style("top", (d3.event.pageY+30)  + "px");
   }
@@ -201,9 +202,9 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     .append("circle")
       .attr("cx", function(d){ return(x(d.R))})
       .attr("cy", function(d){ return( y(d.race) + (y.bandwidth()/2) - jitterWidth/2 + Math.random()*jitterWidth )})
-      .attr("r", function(d){ return s(d.P )})
+      .attr("r", function(d){ return s(d.P*1.5 )})
       .style("fill", function(d){ return(myColor(+d.R)) })
-      .attr("stroke", "black")
+      .attr("stroke", "var(--grey3)")
       .on("mouseover", mouseover)
       .on("mousemove", mousemove)
       .on("mouseout", mouseleave)

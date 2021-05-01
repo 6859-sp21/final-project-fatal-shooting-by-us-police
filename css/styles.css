@@ -10,6 +10,7 @@
   --red1: #FFC6B2;
   --yellow2: #cf9b4c;
   --yellow1: #e7cda6;
+  --grey3: #6d6d6d;
   --grey2: #989898;
   --grey1: #D9D9D9;
 }
@@ -25,6 +26,11 @@ body {
 }
 
 #section4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#section5{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,6 +151,7 @@ right: 60px;
 opacity: 1.0
 }  */
 #storyTitle{
+  color: var(--red2);
   font-size: 0.8rem;
   margin-top: 50px;
 }
@@ -158,11 +165,10 @@ height:50px;
 
 /* boxplot tooltip */
 .tooltip {
-  background-color: white;
+  background-color: whitesmoke;
   border: none;
-  border-radius: 5px;
-  padding: 15px;
-  min-width: 400px;
+  border-radius: 1px;
+  padding: 10px;
   text-align: left;
   color: black;
 }
