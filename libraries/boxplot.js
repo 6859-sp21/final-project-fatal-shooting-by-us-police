@@ -33,13 +33,11 @@ var gTime2 = d3
 gTime2.call(sliderTime2); 
 
 // append the svg object to the body of the page
-var svg = d3.select("#horizontal_boxplot")
+var box_svg = d3.select("#horizontal_boxplot")
   .append("svg")
     .attr("width", width + bpmargin.left + bpmargin.right)
     .attr("height", height + bpmargin.top + bpmargin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + bpmargin.left + "," + bpmargin.top + ")");
+
 
 // Read the data and compute summary statistics for each specie
 d3.csv("data/Race_Pop.csv").then(function(data) {
@@ -73,7 +71,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
   };
 
   var allRace = ["Black", "White", "Hispanic"];
-  var bpdata =[]
+  var bpdata_raw =[]
   for (var i=0; i< allRace.length; i++){
     let raceName = allRace[i];
     var a = test_rate.map(d => {
@@ -81,15 +79,25 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
               let raceR = raceName+"R";
               return {state: d.state, year: d.year, race : raceName, P: +d[raceP], R: +d[raceR]};
               });
-    bpdata = bpdata.concat(a);
+    bpdata_raw = bpdata_raw.concat(a);
   };
-  
 
   // year = 2019
-  bpdata = bpdata.filter(function(d) { return d.year == 2019})
+  bpdata = bpdata_raw.filter(function(d) { return d.year == 2019})
+  render(bpdata);
+  // time slider
+  sliderTime2.on("onchange", val => {
+    let myYear = val
+    bpdata = bpdata_raw.filter(d => d.year == myYear)
+    render(bpdata);
+  })
 
   // console.log(bpdata);
-
+  function render (data){
+    box_svg.selectAll("g").remove();
+    var box_g = box_svg.append("g")
+      .attr("transform",
+          "translate(" + bpmargin.left + "," + bpmargin.top + ")");
   // Compute quartiles, median, inter quantile range min and max --> these info are then used to draw the box.
   var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
     .key(function(d) { return d.race;})
@@ -113,7 +121,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     .range([ height, 0 ])
     .domain(["Black", "White", "Hispanic"])
     .padding(.4);
-  svg.append("g")
+  box_g.append("g")
     .attr("transform", "translate(-20, 0)")
     .style("font-size", "16px")
     .call(d3.axisLeft(y).tickSize(0))
@@ -125,7 +133,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
   var x = d3.scaleSqrt()
     .domain([min,max])
     .range([0, width])
-  svg.append("g")
+  box_g.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).ticks(5))
     .select(".domain").remove()
@@ -151,7 +159,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
   .domain([d3.min(bpdata, function (d) { return +d.P; }),d3.max(bpdata, function (d) { return +d.P; })])  
 
   // Add X axis label:
-  svg.append("text")
+  box_g.append("text")
       .attr("text-anchor", "end")
       .attr("x", width)
       .attr("y", height + bpmargin.top + 30)
@@ -159,7 +167,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .style('fill', 'var(--grey2)');
 
   // Show the main horizontal line
-  svg
+  box_g
     .selectAll("horizLines")
     .data(sumstat)
     .enter()
@@ -173,7 +181,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .style("width", 40)
 
   // rectangle for the main box
-  svg
+  box_g
     .selectAll("boxes")
     .data(sumstat)
     .enter()
@@ -187,7 +195,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
 
 
   // Show the median
-  svg
+  box_g
     .selectAll("medianLines")
     .data(sumstat)
     .enter()
@@ -202,7 +210,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
 
   // Add individual points with jitter
   var jitterWidth = 50;
-  svg.selectAll("indPoints")
+  box_g.selectAll("indPoints")
     .data(bpdata)
     .enter()
     .append("circle")
@@ -228,7 +236,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
   // Three function that change the tooltip when user hover / move / leave a cell
   function mouseover (d) {
     // console.log(d);
-    svg.selectAll("circle")
+    box_g.selectAll("circle")
       .filter(a => a.state !== d.state)
       .style("opacity", 0.2);
     bp_tooltip
@@ -246,16 +254,14 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .style("top", (d3.event.pageY+30) + "px")
   }
   function mouseleave (d) {
-    svg.selectAll("circle")
+    box_g.selectAll("circle")
       .style("opacity", 1);
     bp_tooltip
       .transition()
       .duration(200)
       .style("opacity", 0)
   }
-
-  
-
+}
 
 })
 
