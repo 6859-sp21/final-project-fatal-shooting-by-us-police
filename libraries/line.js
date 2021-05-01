@@ -125,9 +125,9 @@ function update_line(){
                 .datum(d => { return {name: d.name, value: d.values[d.values.length - 1]}; }) // keep only the last value of each time series
                 .attr("transform", d => "translate(" + x(d.value.year) + "," + y(d.value.value) + ")") // Put the text at the position of the last point
                 .attr("x", 12) // shift the text a bit more right
-                .text(d => d.value.state + " " + d.name)
+                .text(d => d.value.state === "Average" ? "National " + d.name : d.value.state + " " + d.name)
                 .style("fill", d => myColor(d.name))
-                .style("font-size", 14)
+                .style("font-size", 12)
                 .attr("class", "myLabels")
                 .style("opacity", d => d.value.state === "Average" ? 0.4 : 1);
         /* 
