@@ -2,7 +2,7 @@
 
 // set the dimensions and margins of the graph
 var bpmargin = {top: 10, right: 30, bottom: 50, left: 90},
-    bpw = 1000, bph = 600,
+    bpw = 1000, bph = 500,
     width = bpw - bpmargin.left - bpmargin.right,
     height = bph - bpmargin.top - bpmargin.bottom;
 
