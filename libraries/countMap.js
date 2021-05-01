@@ -92,7 +92,81 @@ const stateCodeToFips =
         .scale(800)
         .legend(false);
 
-        
+
+
+function renderCalendar(year, data) {
+    d3.select("#calendar").selectAll("*").remove();
+
+    const weeksInMonth = function(month) {
+        var m = d3.timeMonth.floor(month)
+        return d3.timeWeeks(d3.timeWeek.floor(m), d3.timeMonth.offset(m,1)).length;
+    };
+
+
+    const countByDate = d3.rollup(data, v => v.length, d => new Date(d.date));
+    console.log(countByDate);
+
+
+  const cellMargin = 2,
+      cellSize = 13;
+
+
+  const day = d3.timeFormat("%w"),
+      week = d3.timeFormat("%U"),
+      titleFormat = d3.timeFormat("%Y-%m-%d"),
+      monthName = d3.timeFormat("%B"),
+      months= d3.timeMonth.range(new Date(year, 0), new Date(year, 11, 32));
+
+
+  const svg = d3.select("#calendar").selectAll("svg")
+    .data(months)
+    .enter().append("svg")
+    .attr("class", "month")
+    .attr("height", ((cellSize * 7) + (cellMargin * 8) + 20) ) // the 20 is for the month labels
+    .attr("width", function(d) {
+      var columns = weeksInMonth(d);
+      return ((cellSize * columns) + (cellMargin * (columns + 1)));
+    })
+    .append("g");
+
+
+  svg.append("text")
+    .attr("class", "month-name")
+    .attr("y", (cellSize * 7) + (cellMargin * 8) + 15 )
+    .attr("x", function(d) {
+      var columns = weeksInMonth(d);
+      return (((cellSize * columns) + (cellMargin * (columns + 1))) / 2);
+    })
+    .attr("text-anchor", "middle")
+    .text(function(d) { return monthName(d); });
+
+
+  var rect = svg.selectAll("rect.day")
+    .data(function(d, i) { return d3.timeDays(d, new Date(d.getFullYear(), d.getMonth()+1, 1)); })
+    .enter().append("rect")
+    .attr("class", "day")
+    .attr("width", cellSize)
+    .attr("height", cellSize)
+    .attr("rx", 3).attr("ry", 3) // rounded corners
+    .attr("fill", '#eaeaea') // default light grey fill
+    .attr("y", function(d) { return (day(d) * cellSize) + (day(d) * cellMargin) + cellMargin; })
+    .attr("x", function(d) { return ((week(d) - week(new Date(d.getFullYear(),d.getMonth(),1))) * cellSize) + ((week(d) - week(new Date(d.getFullYear(),d.getMonth(),1))) * cellMargin) + cellMargin ; })
+    .on("mouseover", function(d) {
+      d3.select(this).classed('hover', true);
+    })
+    .on("mouseout", function(d) {
+      d3.select(this).classed('hover', false);
+    });
+
+    rect.append("title").text(d => titleFormat(d) + " - " + (countByDate.get(d) || 0) + ' kills');
+
+    var scale = d3.scaleLinear()
+    .domain(d3.extent(countByDate.values()))
+    .range([0.4,1]);
+
+  rect.filter(d => countByDate.has(d))
+    .style("fill", d => d3.interpolatePuBu(scale(countByDate.get(d))));
+}
 
 
         /**
@@ -103,6 +177,8 @@ const stateCodeToFips =
                 // get variable year from html                
                 let year = document.getElementById("year-filter").value;
                 let data = raw_data.filter(d=>d.date.substring(0,4)==year);
+
+                renderCalendar(year, data);
 
                 // sort data by count of death in each state    
                 let countByState = d3.rollup(data, v => v.length, d => d.state); //count of each state

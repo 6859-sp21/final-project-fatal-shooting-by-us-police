@@ -26,7 +26,6 @@
     crossorigin="anonymous"></script>
     <script src="https://unpkg.com/d3-simple-slider@1.10.1/dist/d3-simple-slider.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-    
 </head>
 
 <body>
@@ -37,7 +36,6 @@
             <li><a href="#section2" data-number="2"><span class="cd-dot"></span><span class="cd-label">Death Map</span></a></li>
             <li><a href="#section3" data-number="3"><span class="cd-dot"></span><span class="cd-label">Analysis</span></a></li>
             <li><a href="#section4" data-number="4"><span class="cd-dot"></span><span class="cd-label">Rate Map</span></a></li>
-            <li><a href="#section5" data-number="5"><span class="cd-dot"></span><span class="cd-label">Rate Distribution</span></a></li>
         </ul>
     </nav>
 
@@ -71,6 +69,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div>
+                <div id="calendar"></div>
             </div>
             <div class="grid">
                 <div class="info">
@@ -168,10 +169,8 @@
 
     <!-- 5. Boxplot -->
     <section id="section5" class= "cd-section nav-section" >
-         <div class="container flex-item">
-             <div style="color: whitesmoke;">>> Hover over the dot to view detailed info</div>
+         <div class="container">
             <div id = "horizontal_boxplot"> </div>
-            <div style="text-align: center;">Police-caused death per 1,000,000 by race</div>
         </div>
     </section>
 
