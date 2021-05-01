@@ -106,8 +106,16 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
   // console.log(max);  
   
   // Color scale
-  var myColor = d3.scaleSequentialSqrt()
-    .interpolator(d3.interpolateYlOrRd)
+  var myColorW = d3.scaleSequentialSqrt()
+    .interpolator(d3.interpolateBlues)
+    .domain([min,max])
+
+  var myColorH = d3.scaleSequentialSqrt()
+    .interpolator(d3.interpolateYlOrBr)
+    .domain([min,max])
+
+  var myColorB = d3.scaleSequentialSqrt()
+    .interpolator(d3.interpolateOrRd)
     .domain([min,max])
 
   // Size scale
@@ -133,7 +141,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .attr("x2", function(d){return(x(d.value.max))})
       .attr("y1", function(d){return(y(d.key) + y.bandwidth()/2)})
       .attr("y2", function(d){return(y(d.key) + y.bandwidth()/2)})
-      .attr("stroke", "var(--grey2)")
+      .attr("stroke", "var(--red3)")
       .attr("stroke-width", 2)
       .style("width", 40)
 
@@ -203,7 +211,11 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .attr("cx", function(d){ return(x(d.R))})
       .attr("cy", function(d){ return( y(d.race) + (y.bandwidth()/2) - jitterWidth/2 + Math.random()*jitterWidth )})
       .attr("r", function(d){ return s(d.P*1.5 )})
-      .style("fill", function(d){ return(myColor(+d.R)) })
+      .style("fill", function(d){ 
+        if (d.race == "Black") return(myColorB(+d.R)) 
+        if (d.race == "White") return(myColorW(+d.R)) 
+        if (d.race == "Hispanic") return(myColorH(+d.R)) 
+      })
       .attr("stroke", "var(--grey3)")
       .on("mouseover", mouseover)
       .on("mousemove", mousemove)
