@@ -2,8 +2,35 @@
 
 // set the dimensions and margins of the graph
 var bpmargin = {top: 10, right: 30, bottom: 50, left: 90},
-    width = 1000 - bpmargin.left - bpmargin.right,
-    height = 600 - bpmargin.top - bpmargin.bottom;
+    bpw = 1000, bph = 600,
+    width = bpw - bpmargin.left - bpmargin.right,
+    height = bph - bpmargin.top - bpmargin.bottom;
+
+// Make the slider
+var dataTime2 = d3.range(0, 12).map(function(d) {
+  return 2008 + d;
+  });
+  
+var sliderTime2 = d3
+  .sliderBottom()
+  .min(d3.min(dataTime2))
+  .max(d3.max(dataTime2))
+  .step(1)
+  .width(bpw- bpmargin.right)
+  .tickValues(dataTime2)
+  .tickFormat(d3.format("d"))
+  .default(2008)
+
+var gTime2 = d3
+  .select('div#slider2')
+  // .append("center")
+  .append('svg')
+  .attr('width', bpw)
+  .attr('height', 50)
+  .append('g')
+  .attr('transform', 'translate(15,10)')
+
+gTime2.call(sliderTime2); 
 
 // append the svg object to the body of the page
 var svg = d3.select("#horizontal_boxplot")
@@ -128,7 +155,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .attr("text-anchor", "end")
       .attr("x", width)
       .attr("y", height + bpmargin.top + 30)
-      // .text("Death Rate")
+      .text("Death per 1,000,000 by race")
       .style('fill', 'var(--grey2)');
 
   // Show the main horizontal line
@@ -172,39 +199,10 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .attr("stroke", "var(--red3)")
       .style("width", 80)
 
-  // create a tooltip
-  var bp_tooltip = d3.select("#horizontal_boxplot")
-      .append("div")
-      .style("opacity", 0)
-      .attr("class", "tooltip")
-      .style("font-size", "14px");
-  // Three function that change the tooltip when user hover / move / leave a cell
-  function mouseover (d) {
-    bp_tooltip
-      .transition()
-      .duration(200)
-      .style("opacity", 1);
-    bp_tooltip
-        .html("<span style='color:grey'> State: </span>" + d.state + "<span style='color:grey'> Death Rate: </span>" + d3.format("(.1f")(d.R)) // + d.Prior_disorder + "<br>" + "HR: " +  d.HR)
-        .style("left", (d3.event.pageX+30)  + "px")
-        .style("top", (d3.event.pageY+30)  + "px");
-  }
-  function mousemove (d) {
-    bp_tooltip
-      .style("left", (d3.event.pageX+30) + "px")
-      .style("top", (d3.event.pageY+30) + "px")
-  }
-  function mouseleave (d) {
-    bp_tooltip
-      .transition()
-      .duration(200)
-      .style("opacity", 0)
-  }
 
   // Add individual points with jitter
   var jitterWidth = 50;
-  svg
-    .selectAll("indPoints")
+  svg.selectAll("indPoints")
     .data(bpdata)
     .enter()
     .append("circle")
@@ -220,6 +218,43 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .on("mouseover", mouseover)
       .on("mousemove", mousemove)
       .on("mouseout", mouseleave)
+
+  // create a tooltip
+  var bp_tooltip = d3.select("#horizontal_boxplot")
+      .append("div")
+      .style("opacity", 0)
+      .attr("class", "tooltip")
+      .style("font-size", "14px");
+  // Three function that change the tooltip when user hover / move / leave a cell
+  function mouseover (d) {
+    // console.log(d);
+    svg.selectAll("circle")
+      .filter(a => a.state !== d.state)
+      .style("opacity", 0.2);
+    bp_tooltip
+      .transition()
+      .duration(200)
+      .style("opacity", 1);
+    bp_tooltip
+        .html("<span style='color:grey'> State: </span>" + d.state + "<span style='color:grey'> Death Rate: </span>" + d3.format("(.1f")(d.R)) // + d.Prior_disorder + "<br>" + "HR: " +  d.HR)
+        .style("left", (d3.event.pageX+30)  + "px")
+        .style("top", (d3.event.pageY+30)  + "px");
+  }
+  function mousemove (d) {
+    bp_tooltip
+      .style("left", (d3.event.pageX+30) + "px")
+      .style("top", (d3.event.pageY+30) + "px")
+  }
+  function mouseleave (d) {
+    svg.selectAll("circle")
+      .style("opacity", 1);
+    bp_tooltip
+      .transition()
+      .duration(200)
+      .style("opacity", 0)
+  }
+
+  
 
 
 })
