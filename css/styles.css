@@ -10,7 +10,6 @@
   --red1: #FFC6B2;
   --yellow2: #cf9b4c;
   --yellow1: #e7cda6;
-  --grey3: #6d6d6d;
   --grey2: #989898;
   --grey1: #D9D9D9;
 }
@@ -26,11 +25,6 @@ body {
 }
 
 #section4{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#section5{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -151,7 +145,6 @@ right: 60px;
 opacity: 1.0
 }  */
 #storyTitle{
-  color: var(--red2);
   font-size: 0.8rem;
   margin-top: 50px;
 }
@@ -165,10 +158,11 @@ height:50px;
 
 /* boxplot tooltip */
 .tooltip {
-  background-color: whitesmoke;
+  background-color: white;
   border: none;
-  border-radius: 1px;
-  padding: 10px;
+  border-radius: 5px;
+  padding: 15px;
+  min-width: 400px;
   text-align: left;
   color: black;
 }
@@ -346,5 +340,26 @@ a{
 }
 
 .slider text {
-  fill: white;;
+  fill: white;
+}
+
+
+#calendar {
+  margin: 20px;
+}
+.month {
+  margin-right: 8px;
+}
+.month-name {
+  font-size: 85%;
+  fill: #777;
+  font-family: Arial, Helvetica;
+}
+.day.hover {
+  stroke: #6d6E70;
+  stroke-width: 2;
+}
+.day.focus {
+  stroke: #ffff33;
+  stroke-width: 2;
 }
