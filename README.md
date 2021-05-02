@@ -15,10 +15,12 @@ Data Source:
 
 Analysis:
 * [Understanding the Extent of Police Abuse in the United States of America](https://www.kaggle.com/thedatabeast/understanding-the-extent-of-police-abuse-in-the-us?select=deaths_arrests_race.csv)
+* [Racial disparity in police shootings unchanged over 5 years](https://news.yale.edu/2020/10/27/racial-disparity-police-shootings-unchanged-over-5-years)
 
 JS: 
 * [Scroller](https://vallandingham.me/scroller.html)
-* [Scroller](https://medium.com/@bryony_17728/titanic-d3-scrolling-story-eaed1b6f5766)
+* [Scroller2](https://medium.com/@bryony_17728/titanic-d3-scrolling-story-eaed1b6f5766)
+* [Grid Map](https://github.com/analyzer2004/gridmap)
 * [AOS](https://github.com/michalsnik/aos)
 * [Nav Bar](https://codyhouse.co/gem/vertical-fixed-navigation-2)
 * [Choropleth Map: US States](https://d3-geomap.github.io/map/choropleth/us-states/)
