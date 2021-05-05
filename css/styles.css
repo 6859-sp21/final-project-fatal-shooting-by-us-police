@@ -34,22 +34,6 @@ body {
   align-items: center;
 }
 
-#section1 a span {
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  bottom: 10%;
-  margin: auto;
-  left: 0px;
-  right: 0px;
-  border-left: 2px solid var(--grey3);
-  border-bottom: 2px solid var(--grey3);
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  box-sizing: border-box;
-}
-
-
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
   outline: none !important;
   box-shadow: none !important;
@@ -189,16 +173,6 @@ h2.cursive {
   text-align: left;
 }
 
-/* h3 {
-  font-family: 'Roboto', sans-serif !important;
-  color: white;
-  font-size: 36px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.2em !important;
-  margin-bottom: 30px;
-  margin-right: -0.2em !important;
-  text-align: left;
-} */
 h3.cursive {
   font-family: 'Sacramento', cursive !important;
   font-weight: 300 !important;
@@ -209,6 +183,28 @@ em {
 }
 
 /* Vertical Navigation Bar*/
+.cd-scroll-down {
+  position: absolute;
+  left: 50%;
+  right: auto;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: 40px;
+  width: 30px;
+  height: 44px;
+  background: url('../data/cd-arrow-bottom.svg') no-repeat center center;
+}
+.cd-image-replace {
+  /* replace text with image */
+  display: inline-block;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  color: transparent;
+}
 
 .cd-section {
   display: table;
@@ -219,7 +215,6 @@ em {
 #cd-vertical-nav a {
   color: #ffffff;
   text-decoration: none;
-
 }
 
 ul {
@@ -289,10 +284,14 @@ ul {
   opacity: 1;
   z-index: 0;
 }
-#cd-vertical-nav a.is-selected .cd-dot {
-  background-color: white;
+#cd-vertical-nav a.is-selected .cd-dot{
+  background-color: var(--red2);
   opacity: 1;
 }
+#cd-vertical-nav a.is-selected .cd-label {
+  color: var(--red2);
+}
+
 .cd-dot {
   position: relative;
   top: 8px;
@@ -308,7 +307,7 @@ ul {
   -ms-transform-origin: 50% 50%;
   -o-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  opacity: 0.1;
+  opacity: 0.3;
 }
 
 #cd-vertical-nav .cd-label {

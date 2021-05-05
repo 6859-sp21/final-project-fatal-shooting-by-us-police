@@ -4,6 +4,7 @@
 jQuery(document).ready(function($){
 	var contentSections = $('.nav-section'),
 		navigationItems = $('#cd-vertical-nav a');
+		scrollArrow = $('.cd-scroll-down');
 
 	//console.log(contentSections)
 	updateNavigation();
@@ -21,6 +22,12 @@ jQuery(document).ready(function($){
 		event.preventDefault();
 		smoothScroll($(this.hash));
 	});
+	
+	//smooth scroll to the second section
+    scrollArrow.on('click', function(event){
+    	event.preventDefault();
+        smoothScroll($(this.hash));
+    });
 
 
 	function updateNavigation() {

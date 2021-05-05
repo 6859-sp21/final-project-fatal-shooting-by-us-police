@@ -32,7 +32,7 @@
     <!-- nav dots -->
     <nav id="cd-vertical-nav">
         <ul>
-            <li><a href="#section1" data-number="1"><span class="cd-dot"></span><span class="cd-label">Title</span></a></li>
+            <li><a href="#section1" data-number="1" class="is-selected"><span class="cd-dot"></span><span class="cd-label">Title</span></a></li>
             <li><a href="#section2" data-number="2"><span class="cd-dot"></span><span class="cd-label">Context</span></a></li>
             <li><a href="#section3" data-number="3"><span class="cd-dot"></span><span class="cd-label">Death Map</span></a></li>
             <li><a href="#section4" data-number="4"><span class="cd-dot"></span><span class="cd-label">Analysis</span></a></li>
@@ -42,7 +42,7 @@
     </nav>
 
     <!-- 0. Title -->
-    <section id = "section1" class="cd-section nav-section" style="background-image: url('data/home.png'); 
+    <section id="section1" class="cd-section nav-section" style="background-image: url('data/home.png'); 
     background-position: center bottom; background-repeat: no-repeat; background-size: cover; padding-top: 35vh; padding-bottom: 35vh;">
         <div data-aos="fade-in" style="padding-left: 9%;">
             <h2 class="cursive">FATAL SHOOTING</h2>
@@ -51,17 +51,17 @@
                 <p style="text-align: left;font-size: 17px;">"When you shoot, you shoot to kill. Using your gun is the last resort."<em><br><br>- A police officer</em></p>
             </div>
         </div>
-        <a href="#section2"><span></span></a>
-    </div>
+        <a href="#section2" class="cd-scroll-down cd-image-replace">scroll down</a>
     </section>
     <!-- 1. Context -->
-    <section id = "section2" class="cd-section nav-section" style="background-image: url('data/context.jpg'); 
-    background-position: center bottom; background-repeat: no-repeat; background-size: cover; padding-top: 35vh; padding-bottom: 35vh;">
-        <div class="container flex-item" data-aos="fade-in">
-            <p style="font-size: 1.5rem;">"The USA has very high rates of homicide by police compared to other high-income countries, with approximately 
-                <span style="color: var(--red2)"><strong style="font-size: 2.3rem">1000</strong> civilians killed annually.</span>"</p>
+    <section id="section2" class="nav-section cd-section">
+        <div style="width:100%; height: 100%; background-image: url('data/context.jpg'); 
+        background-position: center bottom; background-repeat: no-repeat; background-size: cover; padding-top: 35vh; padding-bottom: 35vh;">
+            <div class="container flex-item" data-aos="fade-in" >
+                <p style="font-size: 1.5rem;">"The USA has very high rates of homicide by police compared to other high-income countries, with approximately 
+                    <span style="color: var(--red2)"><strong style="font-size: 2.3rem">1000</strong> civilians killed annually.</span>"</p>
+            </div>
         </div>
-    </div>
     </section>
     <!-- 2. Death Map -->
     <section id="section3" class="nav-section cd-section">
