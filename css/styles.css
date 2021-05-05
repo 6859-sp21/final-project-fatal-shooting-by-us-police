@@ -130,9 +130,9 @@ width: 350px;
 height:200px;
 
 }
-html {
+/* html {
   scroll-behavior: smooth;
-}
+} */
 
 #vis {
 display: inline-block;
