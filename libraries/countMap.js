@@ -245,7 +245,7 @@ function renderCalendar(year, data) {
                     tooltip.transition()
                     .duration(30)
                     .style("opacity", 1)
-                    tooltip.html('<div style="display:flex; justify-content:flex-start; align-items:center;"><i class="fa fa-user fa-5x" aria-hidden="true "></i><div style="margin-left:30px">Age:'
+                    tooltip.html('<div style="margin-top: 0.2rem; display:flex; justify-content:flex-start; align-items:center;"><i class="fa fa-user fa-5x" aria-hidden="true "></i><div style="margin-left:30px">Age:'
                          + d.age + "<br>Race: " + d.race + "<br>Location: " + d.city + ", "+ d.state + "<br>Flee: " + d.flee + "</div>" +'</div>')
                     // .style("color", colorChoose(d.state));
                     .style("color", colorIcon(d.race));

@@ -33,36 +33,44 @@
     <nav id="cd-vertical-nav">
         <ul>
             <li><a href="#section1" data-number="1"><span class="cd-dot"></span><span class="cd-label">Title</span></a></li>
-            <li><a href="#section2" data-number="2"><span class="cd-dot"></span><span class="cd-label">Death Map</span></a></li>
-            <li><a href="#section3" data-number="3"><span class="cd-dot"></span><span class="cd-label">Analysis</span></a></li>
-            <li><a href="#section4" data-number="4"><span class="cd-dot"></span><span class="cd-label">Rate Map</span></a></li>
-            <li><a href="#section5" data-number="5"><span class="cd-dot"></span><span class="cd-label">Boxplot</span></a></li>
+            <li><a href="#section2" data-number="2"><span class="cd-dot"></span><span class="cd-label">Context</span></a></li>
+            <li><a href="#section3" data-number="3"><span class="cd-dot"></span><span class="cd-label">Death Map</span></a></li>
+            <li><a href="#section4" data-number="4"><span class="cd-dot"></span><span class="cd-label">Analysis</span></a></li>
+            <li><a href="#section5" data-number="5"><span class="cd-dot"></span><span class="cd-label">Rate Map</span></a></li>
+            <li><a href="#section6" data-number="6"><span class="cd-dot"></span><span class="cd-label">Boxplot</span></a></li>
         </ul>
     </nav>
 
-    <!-- 1. Title -->
+    <!-- 0. Title -->
     <section id = "section1" class="cd-section nav-section" style="background-image: url('data/home.png'); 
-    background-position: center bottom; background-repeat: no-repeat; background-size: cover; padding-top: 35vh; padding-bottom: 35vh;
-    padding-left: 9%;">
-        <div data-aos="fade-in">
+    background-position: center bottom; background-repeat: no-repeat; background-size: cover; padding-top: 35vh; padding-bottom: 35vh;">
+        <div data-aos="fade-in" style="padding-left: 9%;">
             <h2 class="cursive">FATAL SHOOTING</h2>
             <h2 class="cursive">BY US POLICE</h2><br>
             <div style="padding-right: 60vw;" data-aos="fade-in">
                 <p style="text-align: left;font-size: 17px;">"When you shoot, you shoot to kill. Using your gun is the last resort."<em><br><br>- A police officer</em></p>
             </div>
         </div>
+        <a href="#section2"><span></span></a>
+    </div>
+    </section>
+    <!-- 1. Context -->
+    <section id = "section2" class="cd-section nav-section" style="background-image: url('data/context.jpg'); 
+    background-position: center bottom; background-repeat: no-repeat; background-size: cover; padding-top: 35vh; padding-bottom: 35vh;">
+        <div class="container flex-item" data-aos="fade-in">
+            <p style="font-size: 1.5rem;">"The USA has very high rates of homicide by police compared to other high-income countries, with approximately 
+                <span style="color: var(--red2)"><strong style="font-size: 2.3rem">1000</strong> civilians killed annually.</span>"</p>
+        </div>
     </div>
     </section>
     <!-- 2. Death Map -->
-    <section id="section2" class="nav-section cd-section">
-        <div class="container">
+    <section id="section3" class="nav-section cd-section">
+        <div class="container" data-aos="fade-in">
             <div class="heading">
-                <div class="header">Fatal Shooting by US Police</div>
-                <div class="subheader"> This dataset is about every fatal shooting in the United States by a police officer in the line of duty since 2015.
-                    A death is not just a statistic figure, it's a life that once lived in this world.
-                    The importance of data for people who have died should not be diminished. 
-                    <br><br>
-                    <div style="display: flex; align-items: stretch;color: var(--red2);">
+                <div class="header">DEATH MAP</div>
+                <h5 style="color: var(--red2);">A dot represents one death</h5>
+                <div class="subheader">
+                    <div style="display: flex; align-items: stretch;">
                         <span>>> Explore more information about killed citizens per year by dragging the slider</span>
                         <div id="filter-year" style="padding-left: 30px;display: flex; align-items: stretch; ">
                             <input id="year-filter" type="range" class="custom-range" value="2015" min="2015" max="2019" step="1" v-model="year">
@@ -80,11 +88,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-5" style="padding-left: 0px" id="grids">
-                            <div style="color: var(--red2);">>> Hover over a dot for personal information</div>
+                            <div>>> Hover over a dot for personal information</div>
                             <br/>
                         </div>
                         <div class="col-sm-7 d3-geomap" style="padding-right: 0px; text-align: center;" id="mappppp">
-                            <div style="color: var(--red2);">>> Click the state to view general information</div>
+                            <div>>> Click the state to view general information</div>
                             <div class="row justify-content-center" > 
                                 <!-- <svg id="legendddd" style="margin-bottom: -18px;"></svg> -->
                                 <!-- <div style="margin-top: 0.5rem;">Death Rank: <b style="color: #ca3e1c;">1</b>, <b style="color: #FFC6B2;">2</b>, 
@@ -98,8 +106,8 @@
         </div>
     </section>
     <!-- 3. Details -->
-    <section id="section3" class="cd-section nav-section">
-        <div class="container">
+    <section id="section4" class="cd-section nav-section">
+        <div class="container" data-aos="fade-in">
             <div id="storyTitle">>> Here is the beginning of the analysis  </div>
         	<div id='graphic' >
                 
@@ -128,12 +136,12 @@
     	</div>
     </section>
     <!-- 4. Rate Map -->   
-    <section id="section4" class="cd-section nav-section">
-        <div class="container-flux flex-item" style="margin-left: 7%;margin-right: 3%;">
-            <h2 class="rate">DEATH RATE BY RACE</h2>
-            <h5 class="" style="color: var(--red2);">Racism as exposure to premature death</h5>
+    <section id="section5" class="cd-section nav-section">
+        <div class="container-flux flex-item" style="margin-left: 7%;margin-right: 3%;" data-aos="fade-in">
+            <h2 class="header">DEATH RATE BY RACE</h2>
+            <h5 style="color: var(--red2);">Racism as exposure to premature death</h5>
             <br>
-            <div style="color: whitesmoke;">>> Click the state to view death rate by race</div>
+            <div>>> Click the state to view death rate by race</div>
             <div class="row">
                 <div class="col-sm-5">
                     <br>
@@ -169,9 +177,9 @@
 
 
     <!-- 5. Boxplot -->
-    <section id="section5" class= "cd-section nav-section" >
-         <div class="container flex-item">
-            <div style="color: whitesmoke;">>> Hover over the circle for detailed information</div>
+    <section id="section6" class= "cd-section nav-section" >
+         <div class="container flex-item" data-aos="fade-in">
+            <div>>> Hover over the circle for detailed information</div>
             <div id = "horizontal_boxplot"> </div>
             <br/><div id="slider2"></div>
             <!-- <div style="text-align: center;">Police-caused death per 1,000,000 by race (2008-2019)</div> -->
