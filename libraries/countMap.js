@@ -247,7 +247,6 @@ function renderCalendar(year, data) {
                     .style("opacity", 1)
                     tooltip.html('<div style="margin-top: 0.2rem; display:flex; justify-content:flex-start; align-items:center;"><i class="fa fa-user fa-5x" aria-hidden="true "></i><div style="margin-left:30px">Age:'
                          + d.age + "<br>Race: " + d.race + "<br>Location: " + d.city + ", "+ d.state + "<br>Flee: " + d.flee + "</div>" +'</div>')
-                    // .style("color", colorChoose(d.state));
                     .style("color", colorIcon(d.race));
 
                     d3.select('.unit-US' + stateCodeToFips[d.state]).classed("map-state-highlighted", true);
@@ -257,7 +256,6 @@ function renderCalendar(year, data) {
                     // unhighlight color
                     d3.select(this).attr('opacity', '100%');
                     tooltip.transition()
-                    .duration(30)
                     .style("opacity", 0);
 
                     d3.select('.unit-US' + stateCodeToFips[d.state]).classed("map-state-highlighted", false);
@@ -298,7 +296,7 @@ function renderCalendar(year, data) {
                         .attr('opacity', '100%');
                     d3.selectAll('.unit').filter((d2) => d !== d2).attr('opacity', '100%');
                     tooltipState.transition()
-                        .duration(30)
+                        // .duration(30)
                         .style("opacity", 0);
                 }
 

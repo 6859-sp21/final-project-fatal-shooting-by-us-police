@@ -32,12 +32,16 @@
     <!-- nav dots -->
     <nav id="cd-vertical-nav">
         <ul>
-            <li><a href="#section1" data-number="1" class="is-selected"><span class="cd-dot"></span><span class="cd-label">Title</span></a></li>
-            <li><a href="#section2" data-number="2"><span class="cd-dot"></span><span class="cd-label">Context</span></a></li>
-            <li><a href="#section3" data-number="3"><span class="cd-dot"></span><span class="cd-label">Death Map</span></a></li>
-            <li><a href="#section4" data-number="4"><span class="cd-dot"></span><span class="cd-label">Analysis</span></a></li>
-            <li><a href="#section5" data-number="5"><span class="cd-dot"></span><span class="cd-label">Rate Map</span></a></li>
-            <li><a href="#section6" data-number="6"><span class="cd-dot"></span><span class="cd-label">Boxplot</span></a></li>
+            <li><a href="#section1" class="is-selected"><span class="cd-dot"></span><span class="cd-label">Title</span></a></li>
+            <li><a href="#section2"><span class="cd-dot"></span><span class="cd-label">Context</span></a></li>
+            <li><a href="#section3"><span class="cd-dot"></span><span class="cd-label">Across Time</span></a></li>
+            <li><a href="#section4"><span class="cd-dot"></span><span class="cd-label">Across Country</span></a></li>
+            <li><a href="#section5"><span class="cd-dot"></span><span class="cd-label">Analysis</span></a></li>
+            <li><a href="#section6"><span class="cd-dot"></span><span class="cd-label">Rate Map</span></a></li>
+            <li><a href="#section7"><span class="cd-dot"></span><span class="cd-label">Boxplot</span></a></li>
+            <li><a href="#section8"><span class="cd-dot"></span><span class="cd-label">Armed Status</span></a></li>
+            <li><a href="#section9"><span class="cd-dot"></span><span class="cd-label">Actions</span></a></li>
+            <li><a href="#section10"><span class="cd-dot"></span><span class="cd-label">Goals</span></a></li>
         </ul>
     </nav>
 
@@ -63,11 +67,21 @@
             </div>
         </div>
     </section>
-    <!-- 2. Death Map -->
     <section id="section3" class="nav-section cd-section">
+        <div class="container flex-item" data-aos="fade-in">
+            <!-- <div class="heading" style="margin-bottom:10%;">
+            <div class="header">ACROSS TIME</div>
+            </div> -->
+            <p style="font-size: 1.3rem;text-align: center;">There have been <strong style="color: var(--red2);font-size: 1.9rem">341</strong> days in 2019 where police killed someone</p><br/>
+            <div id="calendar"></div>
+        </div>
+    </section>
+
+    <!-- 2. Death Map -->
+    <section id="section4" class="nav-section cd-section">
         <div class="container" data-aos="fade-in">
             <div class="heading">
-                <div class="header">DEATH MAP</div>
+                <div class="header">ACROSS COUNTRY</div>
                 <h5 style="color: var(--red2);">A dot represents one death</h5>
                 <div class="subheader">
                     <div style="display: flex; align-items: stretch;">
@@ -105,8 +119,9 @@
             </div>
         </div>
     </section>
+
     <!-- 3. Details -->
-    <section id="section4" class="cd-section nav-section">
+    <section id="section5" class="cd-section nav-section">
         <div class="container" data-aos="fade-in">
             <div id="storyTitle">>> Here is the beginning of the analysis  </div>
         	<div id='graphic' >
@@ -130,13 +145,11 @@
 	              </section>
                 </div>
         	</div>
-            <div>
-                <div id="calendar"></div>
-            </div>
+            
     	</div>
     </section>
     <!-- 4. Rate Map -->   
-    <section id="section5" class="cd-section nav-section">
+    <section id="section6" class="cd-section nav-section">
         <div class="container-flux flex-item" style="margin-left: 7%;margin-right: 3%;" data-aos="fade-in">
             <h2 class="header">DEATH RATE BY RACE</h2>
             <h5 style="color: var(--red2);">Racism as exposure to premature death</h5>
@@ -169,20 +182,38 @@
                     </div><br>
                     <div id="lineChart"></div>
                     <br>
-                    <div>Police-caused death per 1,000,000 by race (2008-2019)</div>
+                    <div>Police-caused death per 1 million by race (2008-2019)</div>
                 </div> 
            </div>
     </section>
 
-
-
-    <!-- 5. Boxplot -->
-    <section id="section6" class= "cd-section nav-section" >
+    <!-- 6. Boxplot -->
+    <section id="section7" class= "cd-section nav-section" >
          <div class="container flex-item" data-aos="fade-in">
             <div>>> Hover over the circle for detailed information</div>
             <div id = "horizontal_boxplot"> </div>
             <br/><div id="slider2"></div>
-            <!-- <div style="text-align: center;">Police-caused death per 1,000,000 by race (2008-2019)</div> -->
+        </div>
+    </section>
+    <!-- 7. Discussion -->
+    <section id="section8" class= "cd-section nav-section" >
+        <div class="container flex-item" data-aos="fade-in">
+            <h2 class="header">ARMED STATUS</h2>
+            <h5 style="color: var(--red2);">People of Color, whether armed or not, are most likely to be killed by police</h5>
+       </div>
+   </section>
+   <!-- 8. actions -->
+   <section id="section9" class= "cd-section nav-section" >
+        <div class="container flex-item" data-aos="fade-in">
+            <h2 class="header">ACTIONS</h2>
+            <h5 style="color: var(--red2);">National protests against police violence</h5>
+        </div>
+    </section>
+    <!-- 9. end -->
+   <section id="section10" class= "cd-section nav-section" >
+        <div class="container flex-item" data-aos="fade-in">
+            <h2 class="header">GOAL</h2>
+            <h5 style="color: var(--red2);">Together, we can end the police violence</h5>
         </div>
     </section>
 

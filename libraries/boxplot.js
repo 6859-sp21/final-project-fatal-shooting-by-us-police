@@ -163,7 +163,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .attr("text-anchor", "end")
       .attr("x", width)
       .attr("y", height + bpmargin.top + 30)
-      .text("Death per 1,000,000 by race")
+      .text("Death per 1 million by race")
       .style('fill', 'var(--grey2)');
 
   // Show the main horizontal line
@@ -244,7 +244,8 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .duration(200)
       .style("opacity", 1);
     bp_tooltip
-        .html("<span style='color:grey'> State: </span>" + d.state + "<span style='color:grey'> Death Rate: </span>" + d3.format("(.1f")(d.R)) // + d.Prior_disorder + "<br>" + "HR: " +  d.HR)
+        .html("<span style='font-size:0.7rem; display: block;color:grey'>"+ d.race + "</span>" + "<span style='color:grey'> State: </span>" + d.state + 
+        "<span style='color:grey'> Death Rate: </span>" + d3.format("(.1f")(d.R)) // + d.Prior_disorder + "<br>" + "HR: " +  d.HR)
         .style("left", (d3.event.pageX+30)  + "px")
         .style("top", (d3.event.pageY+30)  + "px");
   }
