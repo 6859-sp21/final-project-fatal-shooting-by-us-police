@@ -22,6 +22,7 @@ body {
   color: var(--grey2);
   font-size: .8rem;
 }
+
 .notextdec{
   font-family: sans-serif !important;
 }
@@ -223,10 +224,14 @@ em {
   text-decoration: none;
 }
 
-ul {
+ul{
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+li{
+  list-style-type: none;
 }
 
 /* No Touch devices */
@@ -378,34 +383,25 @@ a{
   stroke-width: 2;
 }
 
+
+/* --------------------------------
+
+Main Components for Timeline Style
+adapted from: https://codepen.io/carrrter/pen/ELLmyX
+
+-------------------------------- */
+
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 *, *::after, *::before {
   box-sizing: border-box;
 }
-/*
-html {
-  font-size: 62.5%;
-}
-
-body {
-  font-size: 1em;
-  font-family: "Ubuntu", sans-serif;
-  color: #fff;
-  background-color: #261C21;
-}
-
 a {
   color: #fff;
   text-decoration: none;
 }
-*/
 
-/* --------------------------------
 
-Main Components
-
--------------------------------- */
 .cd-horizontal-timeline {
   opacity: 0;
   margin: 2em auto;
