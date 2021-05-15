@@ -82,8 +82,8 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     bpdata_raw = bpdata_raw.concat(a);
   };
 
-  // year = 2019
-  bpdata = bpdata_raw.filter(function(d) { return d.year == 2019})
+  // year = 2008
+  bpdata = bpdata_raw.filter(function(d) { return d.year == 2008})
   render(bpdata);
   // time slider
   sliderTime2.on("onchange", val => {
