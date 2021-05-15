@@ -46,6 +46,11 @@ body {
   box-shadow: none !important;
 }
 
+@font-face {
+font-family: "Ubuntu";
+src: url('http://fonts.googleapis.com/css?family=Ubuntu');
+}
+
 .btn-outline-secondary:hover {
   color: var(--grey2);
   background-color: var(--darkblue);
@@ -224,13 +229,17 @@ em {
   text-decoration: none;
 }
 
-ul{
+ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-li{
+li {
+  list-style-type: none;
+}
+
+ol li {
   list-style-type: none;
 }
 
