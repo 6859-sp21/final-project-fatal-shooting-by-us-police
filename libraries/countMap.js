@@ -163,7 +163,7 @@ function renderCalendar(year, data) {
 
     let colorcal = d3.scaleSequential()
     .domain([0, d3.max(countByDate.values())])
-    .interpolator(d3.interpolatePuBu);
+    .interpolator(d3.interpolateReds);
 
     legend({color: colorcal, width: 330, svgIn: d3.select('#legendcalendar'),title: "Number of Killed Citizens per Day"});
 
