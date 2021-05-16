@@ -95,6 +95,7 @@ var map = d3.choropleth()
 
 function renderCalendar(year, data) {
     d3.select("#calendar").selectAll("*").remove();
+    d3.select('#legendcalendar').selectAll("*").remove();
 
     const weeksInMonth = function(month) {
         var m = d3.timeMonth.floor(month)
@@ -151,19 +152,18 @@ function renderCalendar(year, data) {
     .attr("y", function(d) { return (day(d) * cellSize) + (day(d) * cellMargin) + cellMargin; })
     .attr("x", function(d) { return ((week(d) - week(new Date(d.getFullYear(),d.getMonth(),1))) * cellSize) + ((week(d) - week(new Date(d.getFullYear(),d.getMonth(),1))) * cellMargin) + cellMargin ; })
     .on("mouseover", function(d) {
-      d3.select(this).classed('hover', true);
+      d3.select(this).classed('hover', true).transition.duration(0);
     })
+
     .on("mouseout", function(d) {
-      d3.select(this).classed('hover', false);
+      d3.select(this).classed('hover', false).transition.duration(0);
     });
 
     rect.append("title").text(d => titleFormat(d) + " - " + (countByDate.get(d) || 0) + ' kills');
 
-
     let colorcal = d3.scaleSequential()
     .domain([0, d3.max(countByDate.values())])
     .interpolator(d3.interpolatePuBu);
-
 
     legend({color: colorcal, width: 330, svgIn: d3.select('#legendcalendar'),title: "Number of Killed Citizens per Day"});
 
