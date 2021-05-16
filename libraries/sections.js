@@ -182,10 +182,10 @@
     // activateFunctions are called each
     // time the active section changes
     activateFunctions[0] = showInitial;
-    activateFunctions[1] = showGun;
-    activateFunctions[2] = showAge;
-    activateFunctions[3] = showFlight;
-    activateFunctions[4] = showRace;
+    // activateFunctions[1] = showGun;
+    activateFunctions[1] = showAge;
+    activateFunctions[2] = showFlight;
+    activateFunctions[3] = showRace;
 
   };
 
@@ -510,11 +510,10 @@
     var sign = (activeIndex - lastIndex) < 0 ? -1 : 1;
     var scrolledSections = d3.range(lastIndex + sign, activeIndex + sign, sign);
     scrolledSections.forEach(function (i) {
-      if (i == 1) {activateFunctions[i](gunData);}
-      else if (i == 2){activateFunctions[i](ageData);}
-      else if (i == 3){activateFunctions[i](flightData);}
+      if (i == 1){activateFunctions[i](ageData);}
+      else if (i == 2){activateFunctions[i](flightData);}
       else if (i == 0){activateFunctions[i](gunData);}
-      else if (i == 4){activateFunctions[i](RaceData);}
+      else if (i == 3){activateFunctions[i](RaceData);}
     });
     lastIndex = activeIndex;
   };
@@ -604,10 +603,10 @@
     // activateFunctions are called each
     // time the active section changes
     activateFunctions[0] = showInitialL;
-    activateFunctions[1] = showGunL;
-    activateFunctions[2] = showAgeL;
-    activateFunctions[3] = showFlightL;
-    activateFunctions[4] = showRaceL;
+    // activateFunctions[1] = showGunL;
+    activateFunctions[1] = showAgeL;
+    activateFunctions[2] = showFlightL;
+    activateFunctions[3] = showRaceL;
   };
 
   /**
@@ -772,11 +771,10 @@
     var sign = (activeIndex - lastIndex) < 0 ? -1 : 1;
     var scrolledSections = d3.range(lastIndex + sign, activeIndex + sign, sign);
     scrolledSections.forEach(function (i) {
-      if (i == 1) {activateFunctions[i]();}
-      else if (i == 2){activateFunctions[i]();}
-      else if (i == 3){activateFunctions[i](flightData);}
+      if (i == 1){activateFunctions[i]();}
+      else if (i == 2){activateFunctions[i](flightData);}
       else if (i == 0){activateFunctions[i]();}
-      else if (i == 4){activateFunctions[i]();}
+      else if (i == 3){activateFunctions[i]();}
     });
     lastIndex = activeIndex;
   };

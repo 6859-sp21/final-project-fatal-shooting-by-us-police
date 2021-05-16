@@ -107,7 +107,7 @@ src: url('http://fonts.googleapis.com/css?family=Ubuntu');
 
 /* scroller*/
 #graphic{
-  height: 2000px; 
+  height: 1700px; 
   margin-bottom: 50px;
 }
 
@@ -174,6 +174,10 @@ height:50px;
   padding: 10px;
   text-align: left;
   color: black;
+}
+
+#horizontal_boxplot{
+  margin-top: 50px;
 }
 
 h2.cursive {
