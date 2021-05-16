@@ -60,7 +60,6 @@ function update_line(){
         // Arrange data
         var allState = [];
         if (mapState) allState.push(mapState);
-        console.log(allState);
         let checkAverage = document.getElementById("checkAverage").checked;
         if (checkAverage) allState.push("Average");
             

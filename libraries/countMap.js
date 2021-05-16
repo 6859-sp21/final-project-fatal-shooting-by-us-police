@@ -9,7 +9,6 @@ document.getElementById("year-filter").addEventListener("input", e=>{
     let year = e.target.value;
     document.getElementById("year-selected").innerHTML = year;
     document.getElementById("S_Year").innerHTML = year;
-    console.log(e.target.value);
     render();
     scroll_display();
 });
@@ -104,8 +103,6 @@ function renderCalendar(year, data) {
 
 
     const countByDate = d3.rollup(data, v => v.length, d => new Date(d.date));
-    console.log(countByDate);
-
 
   const cellMargin = 2,
       cellSize = 13;
