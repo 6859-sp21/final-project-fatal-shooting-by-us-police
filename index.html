@@ -67,11 +67,14 @@
                     <span style="color: var(--red2)"><strong style="font-size: 2.3rem">1000</strong> civilians killed annually.</span>"</p>
                 </br></br>
                 <div class="subheader">
-                <div style="display: flex; align-items: stretch;">
-                        <span>>> Explore more information about killed citizens per year by dragging the slider</span>
-                        <div id="filter-year" style="padding-left: 30px;display: flex; align-items: stretch; " >
+                <div style="display: flex; align-items: stretch; font-size: 18px">
+                        <span>>>> Explore more information about killed citizens per year by dragging the slider</span>
+                </div></br>
+                <div style="display: flex; font-size: 18px;">
+                        <div id="filter-year" style="" >
                             <input id="year-filter" type="range" class="custom-range" value="2015" min="2015" max="2019" step="1" v-model="year">
-                            <text id="year-selected" style="padding-left: 10px">2015</text>
+                            </br>
+                            Year Selected: <text id="year-selected" style="padding-left: 10px">2015</text>
                         </div>
                 </div>
             </div>
