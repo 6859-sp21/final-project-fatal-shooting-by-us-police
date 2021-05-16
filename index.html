@@ -65,6 +65,16 @@
             <div class="container flex-item" data-aos="fade-in" >
                 <p style="font-size: 1.5rem;">"The USA has very high rates of homicide by police compared to other high-income countries, with approximately 
                     <span style="color: var(--red2)"><strong style="font-size: 2.3rem">1000</strong> civilians killed annually.</span>"</p>
+                </br></br>
+                <div class="subheader">
+                <div style="display: flex; align-items: stretch;">
+                        <span>>> Explore more information about killed citizens per year by dragging the slider</span>
+                        <div id="filter-year" style="padding-left: 30px;display: flex; align-items: stretch; " >
+                            <input id="year-filter" type="range" class="custom-range" value="2015" min="2015" max="2019" step="1" v-model="year">
+                            <text id="year-selected" style="padding-left: 10px">2015</text>
+                        </div>
+                </div>
+            </div>
             </div>
         </div>
     </section>
@@ -75,7 +85,7 @@
             </div>
             <p style="font-size: 1.3rem;text-align: center;">There have been <strong style="color: var(--red2);font-size: 1.9rem">341</strong> days in 2019 where police killed someone</p><br/>
             -->
-            <p style="font-size: 1.3rem;text-align: center;">Hover over your mouse on calendar grid to view how many death are there each day. </p><br/>
+            <p style="font-size: 1.3rem;text-align: center;">Hover your mouse on calendar grid to view how many death are there each day in <text id="S_Year">2015</text>.</p><br/>
             <div id="calendar"></div>
             <div class="row justify-content-center" style="margin-top: 15px">
                 <svg id="legendcalendar"></svg>
@@ -88,16 +98,7 @@
         <div class="container" data-aos="fade-in">
             <div class="heading">
                 <div class="header">ACROSS COUNTRY</div>
-                <h5 style="color: var(--red2);">A dot represents one death</h5>
-                <div class="subheader">
-                    <div style="display: flex; align-items: stretch;">
-                        <span>>> Explore more information about killed citizens per year by dragging the slider</span>
-                        <div id="filter-year" style="padding-left: 30px;display: flex; align-items: stretch; " >
-                            <input id="year-filter" type="range" class="custom-range" value="2015" min="2015" max="2019" step="1" v-model="year">
-                            <text id="year-selected" style="padding-left: 10px">2015</text>
-                        </div>
-                    </div>
-                </div>
+                <h5 style="color: var(--red2);">A dot represents one death in Year <text id="S_Year_1">2015</text></h5>
             </div>
             <div class="grid">
                 <div class="info">
@@ -138,7 +139,7 @@
                 <div id='vis'><div id='vislegend'></div></div>
             	<div id='sections'>
                  <section class="step">
-                    <div class="title">There are <text id="S_Number">994</text> fatal police shootings in <text id="S_Year">2015</text>.</div>
+                    <div class="title">There are <text id="S_Number">994</text> fatal police shootings in <text id="S_Year_2">2015</text>.</div>
                   </section>
 <!--              	  <section class="step">
 	                <div class="title">Were they armed? </div>

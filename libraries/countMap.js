@@ -9,6 +9,8 @@ document.getElementById("year-filter").addEventListener("input", e=>{
     let year = e.target.value;
     document.getElementById("year-selected").innerHTML = year;
     document.getElementById("S_Year").innerHTML = year;
+    document.getElementById("S_Year_1").innerHTML = year;
+    document.getElementById("S_Year_2").innerHTML = year;
     console.log(e.target.value);
     render();
     scroll_display();
