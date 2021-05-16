@@ -5,21 +5,25 @@
  * using reusable charts pattern:
  * http://bost.ocks.org/mike/chart/
  */
+ 
+  /*
+  Same config as countMap.js line 32-43
+  */
+  // var squareSize = 9; 
+  // var strokeWidth = 1.3;
+  // var numPerRow = 30;
+  // var numPerCol = 34;
+  // var w = (squareSize + (strokeWidth * 2)) * numPerRow; // width of chart
+  // var h = (squareSize + (strokeWidth * 2)) * numPerCol; // height of chart
+  // var margin = {
+  //       top: 5,
+  //       right: 5,
+  //       bottom: 5,
+  //       left: 5,
+  // }
  var scrollVis = function () {
   // constants to define the size
   // and margins of the vis area.
-  const squareSize = 9; 
-  const strokeWidth = 1.3;
-  const numPerRow = 30;
-  const numPerCol = 34;
-  const w = (squareSize + (strokeWidth * 2)) * numPerRow; // width of chart
-  const h = (squareSize + (strokeWidth * 2)) * numPerCol; // height of chart
-  const margin = {
-        top: 5,
-        right: 5,
-        bottom: 5,
-        left: 5,
-  }
   // color 
   var myColor = d3.scaleSequential()  
         .interpolator(d3.interpolateReds) // color
@@ -84,87 +88,87 @@
    * sections of the visualization.
    *
    */
-  var setupVis = function (gunData, ageData, flightData) {
-    //gunchart
-    var gunchart = g.selectAll('rect')
-              .data(gunData, function (d) { return d.name; });
+  // var setupVis = function (gunData, ageData, flightData) {
+  //   //gunchart
+  //   var gunchart = g.selectAll('rect')
+  //             .data(gunData, function (d) { return d.name; });
 
-    gunchart.enter().append('rect')
-      .attr('x', (d, i) => {
-          const n = i % numPerRow;
-          return scale(n);
-      })
-      .attr('y', (d, i) => {
-          const n = Math.floor(i / numPerRow);
-          return scale(n);
-      })
-      .attr('fill', d => d.armed == 'gun' ? Ordinalcolor(2) : 'var(--grey1)')
-      .attr('ry', 10)
-      .attr('rx', 10)
-      .attr('width', squareSize)
-      .attr('height', squareSize)
-      .attr("class", 'gun');
+  //   gunchart.enter().append('rect')
+  //     .attr('x', (d, i) => {
+  //         const n = i % numPerRow;
+  //         return scale(n);
+  //     })
+  //     .attr('y', (d, i) => {
+  //         const n = Math.floor(i / numPerRow);
+  //         return scale(n);
+  //     })
+  //     .attr('fill', d => d.armed == 'gun' ? Ordinalcolor(2) : 'var(--grey1)')
+  //     .attr('ry', 10)
+  //     .attr('rx', 10)
+  //     .attr('width', squareSize)
+  //     .attr('height', squareSize)
+  //     .attr("class", 'gun');
       
-    g.selectAll('.gun')
-      .attr('opacity', 0);
+  //   g.selectAll('.gun')
+  //     .attr('opacity', 0);
 
-    //agechart
-    var agechart = g.selectAll('rect')
-      .data(ageData, function (d) { return d.id; });
+  //   //agechart
+  //   var agechart = g.selectAll('rect')
+  //     .data(ageData, function (d) { return d.id; });
 
-    agechart.enter().append('rect')
-      .attr('x', (d, i) => {
-          const n = i % numPerRow;
-          return scale(n);
-      })
-      .attr('y', (d, i) => {
-          const n = Math.floor(i / numPerRow);
-          return scale(n);
-      })
-      .attr('fill', function (d) {
-          if (d.age == 'Unknown') {return Ordinalcolor(9); }
-          else if  (d.age > 40) {return Ordinalcolor(1);}
-          else if (d.age >20)  {return  Ordinalcolor(0);}
-          else {return Ordinalcolor(2);}   
-      })
-      .attr('ry', 10)
-      .attr('rx', 10)
-      .attr('width', squareSize)
-      .attr('height', squareSize)
-      .attr("class", 'age');
+  //   agechart.enter().append('rect')
+  //     .attr('x', (d, i) => {
+  //         const n = i % numPerRow;
+  //         return scale(n);
+  //     })
+  //     .attr('y', (d, i) => {
+  //         const n = Math.floor(i / numPerRow);
+  //         return scale(n);
+  //     })
+  //     .attr('fill', function (d) {
+  //         if (d.age == 'Unknown') {return Ordinalcolor(9); }
+  //         else if  (d.age > 40) {return Ordinalcolor(1);}
+  //         else if (d.age >20)  {return  Ordinalcolor(0);}
+  //         else {return Ordinalcolor(2);}   
+  //     })
+  //     .attr('ry', 10)
+  //     .attr('rx', 10)
+  //     .attr('width', squareSize)
+  //     .attr('height', squareSize)
+  //     .attr("class", 'age');
   
       
-    g.selectAll('.age')
-      .attr('opacity', 0);
+  //   g.selectAll('.age')
+  //     .attr('opacity', 0);
     
-    //flightchart
-    var flightchart = g.selectAll('rect')
-      .data(flightData, function (d) { return d.name; });
+  //   //flightchart
+  //   var flightchart = g.selectAll('rect')
+  //     .data(flightData, function (d) { return d.name; });
 
-    flightchart.enter().append('rect')
-     .attr('x', (d, i) => {
-          const n = i % numPerRow;
-          return scale(n);
-      })
-      .attr('y', (d, i) => {
-          const n = Math.floor(i / numPerRow);
-          return scale(n);
-      })
-      .attr('fill',function (d) { 
-          if (d.flee == 'Unknown') {return Ordinalcolor(9); }
-          else if  (d.flee == 'Foot') {return Ordinalcolor(1);}
-          else if (d.flee == 'Car')  {return  Ordinalcolor(0);}
-          else {return Ordinalcolor(2);}    
-      } )
-      .attr('ry', 10)
-      .attr('rx', 10)
-      .attr('width', squareSize)
-      .attr('height', squareSize)
-      .attr("class", 'flee');
+  //   flightchart.enter().append('rect')
+  //    .attr('x', (d, i) => {
+  //         const n = i % numPerRow;
+  //         return scale(n);
+  //     })
+  //     .attr('y', (d, i) => {
+  //         const n = Math.floor(i / numPerRow);
+  //         return scale(n);
+  //     })
+  //     .attr('fill',function (d) { 
+  //         if (d.flee == 'Unknown') {return Ordinalcolor(9); }
+  //         else if  (d.flee == 'Foot') {return Ordinalcolor(1);}
+  //         else if (d.flee == 'Car')  {return  Ordinalcolor(0);}
+  //         else {return Ordinalcolor(2);}    
+  //     } )
+  //     .attr('ry', 10)
+  //     .attr('rx', 10)
+  //     .attr('width', squareSize)
+  //     .attr('height', squareSize)
+  //     .attr("class", 'flee');
   
-    g.selectAll('.flee')
-      .attr('opacity', 0);  
-  };    
+  //   g.selectAll('.flee')
+  //     .attr('opacity', 0);  
+  // };    
 
 
   /**
@@ -178,9 +182,11 @@
     // activateFunctions are called each
     // time the active section changes
     activateFunctions[0] = showInitial;
-    activateFunctions[1] = showGun;
-    activateFunctions[2] = showAge;
-    activateFunctions[3] = showFlight;
+    // activateFunctions[1] = showGun;
+    activateFunctions[1] = showAge;
+    activateFunctions[2] = showFlight;
+    activateFunctions[3] = showRace;
+
   };
 
   /**
@@ -197,6 +203,9 @@
    * user may be scrolling up or down).
    *
    */
+  var scale = d3.scaleLinear()
+        .domain([0, numPerRow])
+        .range([0, w]);
 
   function showInitial(gunData) {
     
@@ -218,6 +227,8 @@
     //   .transition()
     //   .duration(0)
     //   .attr('opacity', 0);  
+    svg.selectAll('.raceGroup').remove();
+    svg.selectAll('.raceNumber').remove();
     g.selectAll('rect').remove();
     var gunchart = g.selectAll('rect')
               .data(gunData, function (d) { return d.name; });
@@ -262,7 +273,11 @@
     //   .transition()
     //   .duration(0)
     //   .attr('opacity', 0);  
+
     g.selectAll('rect').remove();
+    svg.selectAll('.raceGroup').remove();
+    svg.selectAll('.raceNumber').remove();
+    gunData.sort((a, b) => d3.ascending(a.arm, b.arm)); 
     var gunchart = g.selectAll('rect')
               .data(gunData, function (d) { return d.name; });
 
@@ -275,7 +290,7 @@
           const n = Math.floor(i / numPerRow);
           return scale(n);
       })
-      .attr('fill', d => d.armed == 'gun' ? Ordinalcolor(2): 'var(--grey1)')
+      .attr('fill', d => d.arm === 'Armed' ? Ordinalcolor(2): 'var(--grey1)')
       .attr('ry', 10)
       .attr('rx', 10)
       .attr('width', squareSize)
@@ -307,6 +322,8 @@
     //   .duration(0)
     //   .attr('opacity', 0);  
     g.selectAll('rect').remove();
+    svg.selectAll('.raceGroup').remove();
+    svg.selectAll('.raceNumber').remove();
     var agechart = g.selectAll('rect')
       .data(ageData, function (d) { return d.id; });
 
@@ -355,6 +372,8 @@
     //   .duration(6000)
     //   .attr('opacity', 1.0);  
     g.selectAll('rect').remove();
+    svg.selectAll('.raceGroup').remove();
+    svg.selectAll('.raceNumber').remove();
     var flightchart = g.selectAll('rect')
       .data(flightData, function (d) { return d.name; });
 
@@ -383,21 +402,118 @@
 
   }
 
+   function showRace(my_data){
+        g.selectAll('rect').remove();
+        var numpr = 8;	
+        var x0_scale = d3.scaleBand().padding(0.1).range([0, w]);
+        var x1_scale = d3.scaleLinear();
+  		var y_scale = d3.scaleLinear().range([h - 30,0]);
+  		var format = d3.format(".0%");
+
+        x0_scale.domain(["White","Black","Hispanic","Others"]);
+        x1_scale.domain([0,numpr]).range([0, x0_scale.bandwidth()]);
+
+        y_scale.domain([0,Math.floor(d3.max(my_data,function(d){return d.group_id})/numpr)+3]);
+
+ 
+		var mygroup = svg.selectAll('.raceGroup')
+              		.data(x0_scale.domain(),function(d){return d});
+    	mygroup.exit().remove();
+   		var enter = mygroup.enter()
+                        .append("g")
+                        .attr("class","raceGroup")
+
+    	//append rectangles to new group
+    	enter.append("text").attr("class","bar_text")
+    	//merge and remove
+    	mygroup = mygroup.merge(enter);
+
+    	  //set for bar text attributes
+    	mygroup.select(".bar_text")
+            .attr("x",function(d){ return x0_scale(d) + (x0_scale.bandwidth()*0.15)})
+            .attr("y",function(d){return 395})
+            // .attr("fill",function(d){ //fill dependent on whether survival is being shown.
+            //   if(fill_type == "both"){
+            //     return all_colours[d]
+            //   } else {
+            //     return survival_colours[1] //if survival, show 'Survived' colour as text = survived %
+            // }})
+            .attr("fill",'var(--grey1)')
+            .text(function(d){ return d;
+              })
+            .attr("transform","translate(" + 1 + "," + 1+ ")")
+
+
+            
+              //repeat data,exit,enter and merge for dots
+        var my_group = g.selectAll("rect")
+                      .data(my_data, function (d) { return d.group_id; });
+
+	    my_group.enter()
+	    		.append('rect')	
+	            .attr("x", d => {
+          		 n = d.group_id % numpr;
+         		 return  (x0_scale(d.race)) + x1_scale(n);
+      			})
+	            .attr("y", d => {
+          		n = Math.floor(d.group_id / numpr);
+          		return y_scale(n);
+      			})
+	       		.attr('fill',function (d) { 
+         		if (d.arm == 'Armed') {return Ordinalcolor(2);}
+         		else {return 'var(--grey1)' }
+        		// else {return 'var(--grey1)'}    
+       			  })
+	            .attr('ry', 5)
+      			.attr('rx', 5)
+      			.attr('width', squareSize/1.5)
+      			.attr('height', squareSize/1.5)
+	            .attr("transform","translate(" + 1+ "," + 1+ ")");
+
+	    // Number        
+	 	var mygroup = svg.selectAll('.raceNumber')
+              		.data(x0_scale.domain(),function(d){return d});
+    	mygroup.exit().remove();
+   		var enter = mygroup.enter()
+                        .append("g")
+                        .attr("class","raceNumber")
+
+    	//append rectangles to new group
+    	enter.append("text").attr("class","bar_number")
+    	//merge and remove
+    	mygroup = mygroup.merge(enter);
+
+    	  //set for bar text attributes
+    	mygroup.select(".bar_number")
+            .attr("x",function(d){ return x0_scale(d) + (x0_scale.bandwidth()*0.45)})
+            .attr("y",function(d){return y_scale(Math.floor(d3.max(my_data,function(m){if(m.race==d){return m.group_id}})/numpr)+1)})
+            .attr("fill",'var(--grey1)')
+            .text(function(d){ 
+            	var group_count = my_data.filter(function(m){if(m.race==d){return m}}).length;
+                var armed_count =  my_data.filter(function(m){if(m.race==d && m.arm == "Armed"){return m}}).length;
+                return format(armed_count/group_count)
+              })
+            .style("font-size", "14px");
+
+
+	  };
+
+ 
 
   /**
    * activate -
    *
    * @param index - index of the activated section
    */
-  chart.activate = function (index, gunData,  ageData,flightData,) {
+  chart.activate = function (index, gunData,  ageData,flightData,RaceData) {
     activeIndex = index;
     var sign = (activeIndex - lastIndex) < 0 ? -1 : 1;
     var scrolledSections = d3.range(lastIndex + sign, activeIndex + sign, sign);
     scrolledSections.forEach(function (i) {
-      if (i == 1) {activateFunctions[i](gunData);}
-      else if (i == 2){activateFunctions[i](ageData);}
-      else if (i == 3){activateFunctions[i](flightData);}
+      if (i == 1){activateFunctions[i](ageData);}
+      else if (i == 2){activateFunctions[i](flightData);}
       else if (i == 0){activateFunctions[i](gunData);}
+      else if (i == 3){activateFunctions[i](RaceData);}
     });
     lastIndex = activeIndex;
   };
@@ -419,18 +535,7 @@
  var scrollVisLegend = function () {
   // constants to define the size
   // and margins of the vis area.
-  const squareSize = 9; 
-  const strokeWidth = 1.3;
-  const numPerRow = 30;
-  const numPerCol = 34;
-  const w = (squareSize + (strokeWidth * 2)) * numPerRow; // width of chart
-  const h = (squareSize + (strokeWidth * 2)) * numPerCol; // height of chart
-  const margin = {
-        top: 5,
-        right: 5,
-        bottom: 5,
-        left: 5,
-  }
+
   // color 
 
   var Ordinalcolor = d3.scaleOrdinal(d3.schemeTableau10)
@@ -468,7 +573,7 @@
     selection.each(function (rawData) {
       // create svg and give it a width and height
       svg = d3.select(this).append('svg')
-            .attr('width', 400)
+            .attr('width', w + margin.left + margin.right)
             .attr('height',50)
             .attr('id','legendsvg');
 
@@ -480,7 +585,7 @@
 
       //setupVis(gunData, ageData, flightData);
 
-      setupSections();
+      setupSectionsL();
     });
   };
 
@@ -494,13 +599,14 @@
    * the section's index.
    *
    */
-  var setupSections = function () {
+  var setupSectionsL = function () {
     // activateFunctions are called each
     // time the active section changes
-    activateFunctions[0] = showInitial;
-    activateFunctions[1] = showGun;
-    activateFunctions[2] = showAge;
-    activateFunctions[3] = showFlight;
+    activateFunctions[0] = showInitialL;
+    // activateFunctions[1] = showGunL;
+    activateFunctions[1] = showAgeL;
+    activateFunctions[2] = showFlightL;
+    activateFunctions[3] = showRaceL;
   };
 
   /**
@@ -519,34 +625,34 @@
    */
 
   
-  function showInitial() {
+  function showInitialL() {
 
     svg.selectAll("circle").remove();
     svg.selectAll("text").remove();  
 
   }
-  function showGun() {
+  function showGunL() {
     
-    var glkeys = ["Gun Involved","Gun Not Involved"];
+    var glkeys = ["Armed","Unarmed"];
 
     svg.selectAll("circle").remove();
     svg.selectAll("mydots")
     .data(glkeys)
     .enter()
     .append("circle")
-    .attr("cx", function(d,i){ return 30 + i*150})
+    .attr("cx", function(d,i){ return 70 + i*150})
     .attr("cy", 25) // 100 is where the first dot appears. 25 is the distance between dots
     .attr("r", 5)
-    .style("fill", function(d){ return d === 'Gun Involved' ? Ordinalcolor(2) : 'var(--grey1)';});
+    .style("fill", function(d){ return d === 'Armed' ? Ordinalcolor(2) : 'var(--grey1)';});
 
     svg.selectAll("text").remove();  
     svg.selectAll("mylabels")
       .data(glkeys)
       .enter()
       .append("text")
-        .attr("x", function(d,i){ return 50 + i*150})
+        .attr("x", function(d,i){ return 90 + i*150})
         .attr("y", 25)
-        .style("fill", function(d){ return d === 'Gun Involved' ? Ordinalcolor(2): 'var(--grey1)';})
+        .style("fill", function(d){ return d === 'Armed' ? Ordinalcolor(2): 'var(--grey1)';})
         .text(function(d){ return d})
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")
@@ -555,7 +661,7 @@
   }
 
 
-  function showAge() {
+  function showAgeL() {
     var alkeys = ['<20',"20-40",">40","Unknown"];
 
     svg.selectAll("circle").remove();
@@ -563,7 +669,7 @@
       .data(alkeys)
       .enter()
       .append("circle")
-      .attr("cx", function(d,i){ return 10 + i*100})
+      .attr("cx", function(d,i){ return 10 + i*90})
       .attr("cy", 25) // 100 is where the first dot appears. 25 is the distance between dots
       .attr("r", 5)
       .style("fill", function (d) {
@@ -578,7 +684,7 @@
         .data(alkeys)
         .enter()
         .append("text")
-          .attr("x", function(d,i){ return 20 + i*100})
+          .attr("x", function(d,i){ return 20 + i*90})
           .attr("y", 25)
           .style("fill", function (d) {
             if (d == 'Unknown') {return Ordinalcolor(9); }
@@ -593,7 +699,7 @@
       .duration(600);
   }
 
-  function showFlight(flightData) {
+  function showFlightL(flightData) {
     
 
     var flkeys = d3.set(flightData.map(function(d) { return d.flee; })).values();
@@ -603,7 +709,10 @@
         .data(flkeys)
         .enter()
         .append("circle")
-        .attr("cx", function(d,i){ return 10 + i*100})
+        .attr("cx", function(d,i){ if (i == 0){return 10;} else if(i == 1) {return 120} 
+        	else if (i ==2){return 200}
+        	else{return 290}  
+        })
         .attr("cy", 25) // 100 is where the first dot appears. 25 is the distance between dots
         .attr("r", 5)
         .style("fill", function (d) {
@@ -619,7 +728,11 @@
           .data(flkeys)
           .enter()
           .append("text")
-            .attr("x", function(d,i){ return 20 + i*100})
+            .attr("x", function(d,i){ 
+            	if (i == 0){return 20;} else if(i == 1) {return 130} 
+        	else if (i ==2){return 210}
+        	else{return 300}  
+            })
             .attr("y", 25)
             .style("fill", function (d) {          
               if (d == 'Unknown') {return Ordinalcolor(9); }
@@ -636,6 +749,16 @@
             .style("alignment-baseline", "middle");
 
   }
+    function showRaceL() {
+    
+
+
+    svg.selectAll("circle").remove();
+
+    svg.selectAll("text").remove();  
+
+
+  }
 
 
   /**
@@ -648,10 +771,10 @@
     var sign = (activeIndex - lastIndex) < 0 ? -1 : 1;
     var scrolledSections = d3.range(lastIndex + sign, activeIndex + sign, sign);
     scrolledSections.forEach(function (i) {
-      if (i == 1) {activateFunctions[i]();}
-      else if (i == 2){activateFunctions[i]();}
-      else if (i == 3){activateFunctions[i](flightData);}
+      if (i == 1){activateFunctions[i]();}
+      else if (i == 2){activateFunctions[i](flightData);}
       else if (i == 0){activateFunctions[i]();}
+      else if (i == 3){activateFunctions[i]();}
     });
     lastIndex = activeIndex;
   };
@@ -683,7 +806,8 @@ function display(data) {
   document.getElementById("S_Number").innerHTML = counts;
   
   // console.log(year);
-  var gunData = getGun(data);
+  var RaceData = getRace(data);
+  var gunData = RaceData;
   var ageData = getAge(data);
   var flightData = getFlight(data);
   
@@ -717,7 +841,7 @@ function display(data) {
       .style('opacity', function (d, i) { return i === index ? 1 : 0.1; });
 
     // activate current section
-    plot.activate(index,gunData,ageData,flightData);
+    plot.activate(index,gunData,ageData,flightData,RaceData);
     plotlegend.activate(index,gunData,ageData,flightData);
   });
   // do nothing when it is within one step
@@ -726,13 +850,12 @@ function display(data) {
 
 
   // get data for GunChart
-  function getGun(raw_data) {
-  let gunData = raw_data.filter(d=>d.date.substring(0,4) == year);
-  gunData.map(d => d.armed === '' ? d.armed = 'Unknown': d.armed);
-  gunData.map(d => d.armed === 'gun' ? d.armed : d.armed = 'Notgun');
-
-  return gunData.sort((a, b) => d3.descending(a.armed, b.armed));
-  }
+  // function getGun(raw_data) {
+	 //  let gunData = raw_data.filter(d=>d.date.substring(0,4) == year);
+	 //  gunData.map(d => d.armed === '' ? d.armed = 'Unknown': d.armed);
+	 //  gunData.map(d => d.armed === 'gun' ? d.armed : d.armed = 'Notgun');
+	 //  return gunData.sort((a, b) => d3.descending(a.armed, b.armed));
+  // }
   // get data for AgeChart
   function getAge(raw_data) {
     let ageData = raw_data.filter(d => d.date.substring(0,4) == year);
@@ -747,6 +870,57 @@ function display(data) {
     flightData.map(d => d.flee === "" ? d.flee ='Unknown': d.flee);
     let countByflee = d3.rollup(flightData, v => v.length, d => d.flee); //count of each state
     return flightData.sort((a, b) => d3.descending(countByflee.get(a.flee), countByflee.get(b.flee))); 
+  }
+
+  function getRace(raw_data){
+  	var my_data = raw_data.filter(d=>d.date.substring(0,4) == year);
+  	my_data.map(d => d.armed === "" ? d.armed='Unknown': d.armed);
+    my_data.map(d => d.armed === "unarmed" ? d.armed ='Unarmed': d.armed);
+    my_data.map(d => d.armed === "Unarmed" || d.armed === "Unknown" ? d.armed: d.armed = "Armed");
+  	my_data.sort((a, b) => d3.descending(a.armed, b.armed)); 
+  	
+    var current_positions = [];
+    var group_id = [-1,-1,-1,-1];
+    for(d in my_data){
+    	// var group_count = my_data.filter(function(m){if(m.race==my_data[d].race){return m}}).length;
+        // var arms;
+        // if (my_data[d].armed == ""){
+        // 	arms = 'Unknown';
+        // }
+        // else if(my_data[d].armed =="unarmed"){
+        // 	arms = 'Unarmed';
+        // } else{
+        // 	arms = 'Armed';
+        // }
+        var races;
+        var gid;
+        if (my_data[d].race == 'W'){
+        	races = 'White';
+        	gid = group_id[0]+1
+        	group_id[0] = group_id[0] +1 
+        }else if(my_data[d].race ==='B'){
+        	races = 'Black';
+        	gid = group_id[1]+1
+        	group_id[1] = group_id[1] +1 
+        } else if (my_data[d].race === 'H'){
+        	races = 'Hispanic';
+        	gid = group_id[2]+1
+        	group_id[2] = group_id[2] +1 
+        }else {
+        	races = 'Others';
+        	gid = group_id[3]+1
+        	group_id[3] = group_id[3] +1 
+        }
+
+        current_positions.push ({
+          id: my_data[d].id,
+          group_id: gid,
+          arm: my_data[d].armed,
+          name: my_data[d].name,
+          race: races,
+     	 })
+    }
+    return current_positions;
   }
 }
 

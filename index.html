@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="css/aos.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Ubuntu' type='text/css'>
     <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&display=swap" rel="stylesheet"> -->
 
     <script type="text/javascript" src= "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script> 
     <script src="https://unpkg.com/topojson@3/dist/topojson.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-geomap@3.3.0/dist/d3-geomap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js" integrity="sha512-wNH6xsp2n8CfB91nrBtfc4sfLwYPBMjSWVUwQOp60AYYXH6i8yCwuKFZ4rgK2i6pQek/b+bSyR7b01/922IBzQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.js" integrity="sha512-5mCB0Kvv97yTzqo0174qxPjMisck/WlK51+mw/RV7UfYbtHI8LuLR82BzZuxHUKSfbh75u9cZHgUcqrZDaBJuA==" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
@@ -64,7 +65,20 @@
         background-position: center bottom; background-repeat: no-repeat; background-size: cover; padding-top: 35vh; padding-bottom: 35vh;">
             <div class="container flex-item" data-aos="fade-in" >
                 <p style="font-size: 1.5rem;">"The USA has very high rates of homicide by police compared to other high-income countries, with approximately 
-                    <span style="color: var(--red2)"><strong style="font-size: 2.3rem">1000</strong> civilians killed annually</span>."</p>
+                    <span style="color: var(--red2)"><strong style="font-size: 2.3rem">1000</strong> civilians killed annually.</span>"</p>
+                </br></br>
+                <div class="subheader">
+                <div style="display: flex; align-items: stretch; font-size: 18px">
+                        <span>>>> Explore more information about killed citizens per year by dragging the slider</span>
+                </div></br>
+                <div style="display: flex; font-size: 18px;">
+                        <div id="filter-year">
+                            <input id="year-filter" type="range" class="custom-range" value="2015" min="2015" max="2019" step="1" v-model="year">
+                            </br>
+                            Year Selected: <text id="year-selected" style="padding-left: 10px">2015</text>
+                        </div>
+                </div>
+            </div>
             </div>
         </div>
     </section>
@@ -73,9 +87,14 @@
         <div class="container flex-item" data-aos="fade-in">
             <!-- <div class="heading" style="margin-bottom:10%;">
             <div class="header">ACROSS TIME</div>
-            </div> -->
+            </div>
             <p style="font-size: 1.3rem;text-align: center;">There have been <strong style="color: var(--red2);font-size: 1.9rem">341</strong> days in 2019 where police killed someone</p><br/>
+            -->
+            <p style="font-size: 1.3rem;text-align: center;">Hover your mouse on calendar grid to view how many death are there each day in <text id="S_Year">2015</text>.</p><br/>
             <div id="calendar"></div>
+            <div class="row justify-content-center" style="margin-top: 15px">
+                <svg id="legendcalendar"></svg>
+            </div>
         </div>
     </section>
     <!-- 4. Death Map -->
@@ -83,16 +102,7 @@
         <div class="container" data-aos="fade-in">
             <div class="heading">
                 <div class="header">ACROSS COUNTRY</div>
-                <h5 style="color: var(--red2);">A dot represents one death</h5>
-                <div class="subheader">
-                    <div style="display: flex; align-items: stretch;">
-                        <span>>> Explore more information about killed citizens per year by dragging the slider</span>
-                        <div id="filter-year" style="padding-left: 30px;display: flex; align-items: stretch; ">
-                            <input id="year-filter" type="range" class="custom-range" value="2015" min="2015" max="2019" step="1" v-model="year">
-                            <text id="year-selected" style="padding-left: 10px">2015</text>
-                        </div>
-                    </div>
-                </div>
+                <h5 style="color: var(--red2);">A dot represents one death in Year <text id="S_Year_1">2015</text></h5>
             </div>
             <div class="grid">
                 <div class="info">
@@ -114,6 +124,9 @@
                                     <b style="color: #496C99;">3</b>, <b style="color: #da8671;">4</b>, <b style="color: #96ABC6;">5</b>
                                 </div> -->
                             </div>
+                            <div class="row justify-content-center" style="margin-top: 15px">
+                                <svg id="legendddd"></svg>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -129,20 +142,24 @@
                 <div id='vis'><div id='vislegend'></div></div>
             	<div id='sections'>
                  <section class="step">
-                    <div class="title">There are <text id="S_Number">994</text> fatal police shootings in <text id="S_Year">2015</text>.</div>
+                    <div class="title">There are <text id="S_Number">994</text> fatal police shootings in <text id="S_Year_2">2015</text>.</div>
                   </section>
-             	  <section class="step">
-	                <div class="title">Was the gun involved? </div>
-	                Over half of fatal shootings by a police officer include the deceased being armed with a gun. It makes policing be a tough job.
-	              </section>
+<!--              	  <section class="step">
+	                <div class="title">Were they armed? </div>
+	                Most fatal shootings by a police officer include the deceased being armed. It makes policing be a tough job.
+	              </section> -->
 	              <section class="step">
-	                <div class="title">How old are they? </div>
+	                <div class="title">How old were they? </div>
 	                It is a sad fact that the majority of the people killed in fatal encounters were children and young adults. 
 	              </section>
 	              <section class="step">
 	                <div class="title">Were they fleeing?</div>
 	                Around 60% of those killed in these encounters were not fleeing from the scene. <br/><br/> In this situation, was a shot to kill a necessity?
 	              </section>
+                   <section class="step">
+                    <div class="title">Were they armed? </div>
+                    Most fatal shootings by a police officer include the deceased being armed. It makes policing be a tough job.<br/><br/> However, we can not see a huge difference between different race.
+                  </section>
                 </div>
         	</div>
             
@@ -271,8 +288,12 @@
     <script src="libraries/cardMap.js"></script>
     <script src="libraries/line.js"></script>
     <script src="libraries/boxplot.js"></script>
+<<<<<<< HEAD
     <script src="libraries/armed.js"></script>
     <script src="libraries/barChart.js"></script>
+=======
+    <script src="libraries/timeline.js"></script>
+>>>>>>> 8c5936f654b0fa18c7fa6ad0b2cda9948c5d5eb7
     <!-- aos -->
     <script src="libraries/aos.js"></script>
     <script src="libraries/animate.js"></script>

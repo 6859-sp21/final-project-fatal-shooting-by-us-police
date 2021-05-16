@@ -82,8 +82,8 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     bpdata_raw = bpdata_raw.concat(a);
   };
 
-  // year = 2019
-  bpdata = bpdata_raw.filter(function(d) { return d.year == 2019})
+  // year = 2008
+  bpdata = bpdata_raw.filter(function(d) { return d.year == 2008})
   render(bpdata);
   // time slider
   sliderTime2.on("onchange", val => {
@@ -95,6 +95,8 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
   // console.log(bpdata);
   function render (data){
     box_svg.selectAll("g").remove();
+    box_svg.selectAll("circle").remove();
+    box_svg.selectAll("text").remove();
     var box_g = box_svg.append("g")
       .attr("transform",
           "translate(" + bpmargin.left + "," + bpmargin.top + ")");
@@ -115,6 +117,9 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     .entries(bpdata)
 
   // console.log(sumstat);
+
+
+
 
   // Show the Y scale
   var y = d3.scaleBand()
@@ -155,8 +160,39 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
 
   // Size scale
   var s = d3.scaleLinear()
-  .range([3, 10])
+  .range([4, 15])
   .domain([d3.min(bpdata, function (d) { return +d.P; }),d3.max(bpdata, function (d) { return +d.P; })])  
+
+  // Show legend
+  // box_svg.append("g")
+  //   .attr("class", "legendSize")
+  //   .attr("transform", "translate(250, 10)");
+
+  // var legendSize = d3.legendSize()
+  //   .scale(s)
+  //   .shape('circle')
+  //   .shapePadding(100)
+  //   .labelOffset(20)
+  //   .orient('horizontal')
+  //   .;
+
+  // box_svg.select(".legendSize")
+  //   .call(legendSize);
+  var minP = d3.min(bpdata, function (d) { return +d.P; })
+  var maxP = d3.max(bpdata, function (d) { return +d.P; })
+  var meanP1 = (maxP - minP)/3
+  var meanP2 = (maxP - minP)/3*2
+  var formatSuffix = d3.format(".1s");
+  box_svg.append("text").attr("x", 100).attr("y", 20).text("Population").style("font-size", "15px").attr("alignment-baseline","middle").style("fill",'var(--grey2)');
+  box_svg.append("circle").attr("cx",250).attr("cy",20).attr("r", function(){ return s(minP)}) .style("stroke", "gray").style("stroke-width", 1).style("fill", "none");
+  box_svg.append("circle").attr("cx",400).attr("cy",20).attr("r", s(meanP1)) .style("stroke", "gray").style("stroke-width",1)  .style("fill", "none");
+  box_svg.append("circle").attr("cx",550).attr("cy",20).attr("r", s(meanP2)) .style("stroke", "gray").style("stroke-width",1)  .style("fill", "none");
+  box_svg.append("circle").attr("cx",700).attr("cy",20).attr("r", s(maxP)) .style("stroke", "gray") .style("stroke-width", 1) .style("fill", "none");
+  box_svg.append("text").attr("x", 270).attr("y", 20).text(function(){ return formatSuffix(minP)}).style("font-size", "15px").attr("alignment-baseline","middle").style("fill",'var(--grey2)');
+  box_svg.append("text").attr("x", 420).attr("y", 20).text(function(){ return formatSuffix(meanP1)}).style("font-size", "15px").attr("alignment-baseline","middle").style("fill",'var(--grey2)');
+  box_svg.append("text").attr("x", 570).attr("y", 20).text(function(){ return formatSuffix(meanP2)}).style("font-size", "15px").attr("alignment-baseline","middle").style("fill",'var(--grey2)');
+  box_svg.append("text").attr("x", 720).attr("y", 20).text(function(){ return formatSuffix(maxP)}).style("font-size", "15px").attr("alignment-baseline","middle").style("fill",'var(--grey2)');
+
 
   // Add X axis label:
   box_g.append("text")
@@ -216,7 +252,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     .append("circle")
       .attr("cx", function(d){ return(x(d.R))})
       .attr("cy", function(d){ return( y(d.race) + (y.bandwidth()/2) - jitterWidth/2 + Math.random()*jitterWidth )})
-      .attr("r", function(d){ return s(d.P*1.5 )})
+      .attr("r", function(d){ return s(d.P)})
       .style("fill", function(d){ 
         if (d.race == "Black") return(myColorB(+d.R)) 
         if (d.race == "White") return(myColorW(+d.R)) 
