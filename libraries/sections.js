@@ -273,7 +273,7 @@
     //   .transition()
     //   .duration(0)
     //   .attr('opacity', 0);  
-    console.log(gunData);
+
     g.selectAll('rect').remove();
     svg.selectAll('.raceGroup').remove();
     svg.selectAll('.raceNumber').remove();
@@ -409,8 +409,7 @@
         var x1_scale = d3.scaleLinear();
   		var y_scale = d3.scaleLinear().range([h - 30,0]);
   		var format = d3.format(".0%");
-  		console.log(w)
-  		console.log(h-30)
+
         x0_scale.domain(["White","Black","Hispanic","Others"]);
         x1_scale.domain([0,numpr]).range([0, x0_scale.bandwidth()]);
 
@@ -813,7 +812,7 @@ function display(data) {
   var gunData = RaceData;
   var ageData = getAge(data);
   var flightData = getFlight(data);
-  console.log(RaceData);
+  
   // create a new plot and
   // display it
   d3.select('#scrollsvg').remove();
@@ -881,7 +880,7 @@ function display(data) {
     my_data.map(d => d.armed === "unarmed" ? d.armed ='Unarmed': d.armed);
     my_data.map(d => d.armed === "Unarmed" || d.armed === "Unknown" ? d.armed: d.armed = "Armed");
   	my_data.sort((a, b) => d3.descending(a.armed, b.armed)); 
-  	console.log(my_data);
+  	
     var current_positions = [];
     var group_id = [-1,-1,-1,-1];
     for(d in my_data){
