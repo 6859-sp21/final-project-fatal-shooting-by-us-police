@@ -1,4 +1,7 @@
 # final-project-fatal-shooting-by-us-police
+
+[Website](https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/)
+
 Policing is a difficult job, but it also something that provides too much power into the hands of a few individuals, and it becomes difficult to hold people with authority accountable for their actions. According to the Washington Post, Police officers in the U.S. shoot and kill about 1,000 people each year.
 
 Are all kinds of crimes worthy of a direct final judgment without a trial in the court of law? This is a difficult question to answer. But while people are thinking, we would like to provide them with an interactive way to explore the around 1,000 deaths by police each year. Based on the goal above, we use a dataset compiled by The Washington Post of every fatal shooting in the United States by police since 2015. 
