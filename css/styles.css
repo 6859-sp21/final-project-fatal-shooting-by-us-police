@@ -93,6 +93,12 @@ src: url('http://fonts.googleapis.com/css?family=Ubuntu');
   justify-self: center;
   font-size: 30px;
 }
+.header2{
+  font-family: 'Roboto', sans-serif !important;
+  color: var(--grey2);
+  font-weight: 600 !important;
+  margin-bottom: -0.08rem;
+}
 .header {
   font-family: 'Roboto', sans-serif !important;
   color: whitesmoke;
@@ -381,7 +387,7 @@ ol li {
 }
 
 a{
-  color: var(--red2);
+  color: var(--red2) !important;
 }
 
 .fa{
