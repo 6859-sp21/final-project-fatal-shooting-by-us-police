@@ -1,8 +1,7 @@
 
-
 // set the dimensions and margins of the graph
 var bpmargin = {top: 10, right: 30, bottom: 50, left: 90},
-    bpw = 1000, bph = 500,
+    bpw = 1000, bph = 450,
     width = bpw - bpmargin.left - bpmargin.right,
     height = bph - bpmargin.top - bpmargin.bottom;
 
@@ -27,8 +26,10 @@ var gTime2 = d3
   .append('svg')
   .attr('width', bpw)
   .attr('height', 50)
+  .call(responsivefy)
   .append('g')
   .attr('transform', 'translate(15,10)')
+  
 
 gTime2.call(sliderTime2); 
 
@@ -37,6 +38,7 @@ var box_svg = d3.select("#horizontal_boxplot")
   .append("svg")
     .attr("width", width + bpmargin.left + bpmargin.right)
     .attr("height", height + bpmargin.top + bpmargin.bottom)
+    .call(responsivefy);
 
 
 // Read the data and compute summary statistics for each specie
@@ -92,7 +94,6 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     render(bpdata);
   })
 
-  // console.log(bpdata);
   function render (data){
     box_svg.selectAll("g").remove();
     box_svg.selectAll("circle").remove();
@@ -130,7 +131,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     .attr("transform", "translate(-20, 0)")
     .style("font-size", "1rem")
     .call(d3.axisLeft(y).tickSize(0))
-    .select(".domain").remove()
+    .select(".domain").remove();
 
   // Show the X scale
   var min = d3.min(bpdata, function (d) { return +d.R; });
@@ -141,9 +142,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
   box_g.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).ticks(5))
-    .select(".domain").remove()
-  // console.log(min);  
-  // console.log(max);  
+    .select(".domain").remove();
   
   // Color scale
   var myColorW = d3.scaleSequentialSqrt()
@@ -200,6 +199,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .attr("x", width)
       .attr("y", height + bpmargin.top + 30)
       .text("Death per 1 million by race")
+      .style("font-size","0.8rem")
       .style('fill', 'var(--grey2)');
 
   // Show the main horizontal line

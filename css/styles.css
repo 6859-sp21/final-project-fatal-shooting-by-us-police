@@ -114,6 +114,19 @@ src: url('http://fonts.googleapis.com/css?family=Ubuntu');
   opacity: 40%;
 }
 
+.svg-content-responsive{
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 0;
+}
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  vertical-align: top;
+  overflow: hidden;
+}
 
 /* slider */
 
@@ -145,9 +158,6 @@ width: 350px;
 height:200px;
 
 }
-/* html {
-  scroll-behavior: smooth;
-} */
 
 #vis {
 display: inline-block;
@@ -164,15 +174,7 @@ font-size: 1.2rem;
 font-weight: bold;
 margin-bottom: 10px;
 }
-/* #vislegend {
-display: inline-block;
-position: sticky;
-top : 150px;
-z-index: 1;
-margin-left: 640px;
-right: 60px;
-opacity: 1.0
-}  */
+
 #storyTitle{
   font-size: 0.8rem;
   margin-top: 50px;

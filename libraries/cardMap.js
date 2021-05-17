@@ -19,10 +19,36 @@ const usmap = [[0, 0, ""], [1, 0, ""], [2, 0, ""], [3, 0, ""], [4, 0, ""], [5, 0
 const wmap = 550; 
 const hmap = 400; 
 
-const grid_svg = d3.select("#gridmap").append("svg")
+// responsive svg with viewbox
+function responsivefy(svg) {
+    const container = d3.select(svg.node().parentNode),
+        width = parseInt(svg.style('width'), 10),
+        height = parseInt(svg.style('height'), 10),
+        aspect = width / height;
+        
+    svg.attr('viewBox', `0 0 ${width} ${height}`).
+    attr('preserveAspectRatio', 'xMinYMid').
+    call(resize);
+  
+    d3.select(window).on('resize.' + container.attr('id'), resize);
+  
+    function resize() {
+        const targetWidth = parseInt(container.style('width'));
+        svg.attr('width', targetWidth);
+        svg.attr('height', Math.round(targetWidth / aspect));
+    }
+}
+
+const grid_svg = d3.select("#gridmap")
+    
+    .append("svg")
+    .classed("svg-container", true)
     .attr("font-size", "10pt")
-    .attr("width", wmap)
-    .attr("height", hmap);    
+    // .attr("width", wmap)
+    // .attr("height", hmap)
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", `0 0 ${wmap} ${hmap}`)
+    .classed("svg-content-responsive", true);    
 
 const grid_g = grid_svg.append("g").attr("transform", "translate(30,20)");  
 
@@ -44,10 +70,12 @@ var gTime = d3
     .select('div#slider')
     .append("center")
     .append('svg')
-    .attr('width', wmap)
-    .attr('height', 50)
-    .append('g')
-    .attr('transform', 'translate(15,10)')
+    .classed("svg-container", true)
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", `0 0 ${wmap} 50`)
+    .classed("svg-content-responsive", true)
+        .append('g')
+        .attr('transform', 'translate(15,10)')
 
 gTime.call(sliderTime); 
 

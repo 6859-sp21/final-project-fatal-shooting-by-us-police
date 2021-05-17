@@ -8,7 +8,7 @@ document.getElementById("checkAverage").addEventListener("input", e=>{update_lin
 /* Line chart */
 var fullHeight = 400;
 var fullWidth = 750;
-var margin_line = {top: 20, right: 150, bottom: 20, left: 40};
+var margin_line = {top: 20, right: 110, bottom: 20, left: 40};
 var height_line = fullHeight - margin_line.top - margin_line.bottom;
 var width_line = fullWidth - margin_line.right - margin_line.left;
 
@@ -17,8 +17,10 @@ var myColor = d3.scaleOrdinal()
     .range([d3.schemeSet2[1],d3.schemeSet2[2],d3.schemeSet2[6]]);
 var linechart = d3.select("#lineChart")
     .append("svg")
-        .attr("width",fullWidth)
-        .attr("height",fullHeight)
+        .classed("svg-container", true)
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", `0 0 ${fullWidth} ${fullHeight}`)
+        .classed("svg-content-responsive", true)
     .append("g")
         .attr("transform","translate(" + margin_line.left + "," + margin_line.top + ")");
         
@@ -159,6 +161,7 @@ function update_line(){
             .style("opacity", 0)
             .attr("text-anchor", "left")
             .style("fill","var(--grey1)")
+            .style("font-size", 12)
             .attr("alignment-baseline", "middle");
         // place those effects
         mouseG.append('rect')

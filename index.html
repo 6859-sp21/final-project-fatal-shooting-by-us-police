@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="css/aos.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu' type='text/css'>
-    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&display=swap" rel="stylesheet"> -->
 
     <script type="text/javascript" src= "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script> 
     <script src="https://unpkg.com/topojson@3/dist/topojson.min.js"></script>
@@ -194,39 +194,42 @@
    </section>
     <!-- 7. Rate Map -->   
     <section id="section7" class="cd-section nav-section">
-        <div class="container-flux flex-item" style="margin-left: 7%;margin-right: 3%;" data-aos="fade-in">
+        <div class="container-fluid"  data-aos="fade-in" style="margin-left: 10%; margin-right: 5%;">
             <h2 class="header">DEATH RATE BY RACE</h2>
             <h5 style="color: var(--red2);">Racism as exposure to premature death</h5>
             <br>
-            <div>>> Click the state to view death rate by race</div>
             <div class="row">
                 <div class="col-sm-5">
-                    <br>
-                    <div  style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-                        <div id="gridmap" class="notextdec"></div>
-                        <div id="slider"></div>
-                    </div>
+                    <div>>> Click the state to view death rate by race</div>
                 </div>
-                <div class="col-sm-7" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: -30px;">
+                <div class="col-sm-7 text-center">
                     <div style="display: inline-block;">
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-outline-secondary btn-sm active">
-                              <input type="checkbox" name="options" id="checkBlack" autocomplete="off" checked> Black
+                                <input type="checkbox" name="options" id="checkBlack" autocomplete="off" checked> Black
                             </label>
                             <label class="btn btn-outline-secondary btn-sm active">
-                              <input type="checkbox" name="options" id="checkWhite" autocomplete="off" checked> White
+                                <input type="checkbox" name="options" id="checkWhite" autocomplete="off" checked> White
                             </label>
                             <label class="btn btn-outline-secondary btn-sm active">
-                              <input type="checkbox" name="options" id="checkHispanic" autocomplete="off" checked> Hispanic
+                                <input type="checkbox" name="options" id="checkHispanic" autocomplete="off" checked> Hispanic
                             </label>
                             <label class="btn btn-outline-secondary btn-sm active">
                                 <input type="checkbox" name="options" id="checkAverage" autocomplete="off" checked> National
-                              </label>
-                          </div>
-                    </div><br>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div id="gridmap" class="notextdec"></div>
+                    <div id="slider"></div>
+                </div>
+                <div class="col-sm-7 text-center">
                     <div id="lineChart"></div>
                     <br>
-                    <div>Police-caused death per 1 million by race (2008-2019)</div>
+                    <div style="font-size: 0.8rem;">Police-caused death per 1 million by race (2008-2019)</div>
                 </div> 
            </div>
     </section>
@@ -236,7 +239,7 @@
          <div class="container flex-item" data-aos="fade-in">
             <div>>> Hover over the circle for detailed information</div>
             <div id = "horizontal_boxplot"> </div>
-            <br/><div id="slider2"></div>
+            <div id="slider2"></div>
         </div>
     </section>
     <!-- 9. Armed -->
@@ -439,11 +442,10 @@
     </script>
 	<script src="libraries/index.js"></script>
     <script src="libraries/color-legend.js"></script>
-    <!-- <script src="libraries/legendCalendar.js"></script> -->
     <script src="libraries/scroller.js"></script>
     <script src="libraries/sections.js"></script>
     <script src="libraries/countMap.js"></script>
-    <script src="libraries/popper.min.js"></script>
+    <!-- <script src="libraries/popper.min.js"></script> -->
     <script src="libraries/gridmap.js"></script>
     <script src="libraries/cardMap.js"></script>
     <script src="libraries/line.js"></script>
