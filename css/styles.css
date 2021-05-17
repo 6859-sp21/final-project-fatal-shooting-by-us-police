@@ -19,7 +19,7 @@
 
 body {
   /* 'Roboto Mono', monospace; */
-  font-family: 'Roboto Slab' !important;
+  font-family: 'Ubuntu' !important;
   /* font-family: "PostoniStandardRegular",Georgia,serif; */
   background-color: var(--darkblue) !important;
   color: var(--grey2);
