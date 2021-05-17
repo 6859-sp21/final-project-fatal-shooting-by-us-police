@@ -8,7 +8,7 @@ document.getElementById("checkAverage").addEventListener("input", e=>{update_lin
 /* Line chart */
 var fullHeight = 400;
 var fullWidth = 750;
-var margin_line = {top: 20, right: 110, bottom: 20, left: 40};
+var margin_line = {top: 20, right: 130, bottom: 20, left: 40};
 var height_line = fullHeight - margin_line.top - margin_line.bottom;
 var width_line = fullWidth - margin_line.right - margin_line.left;
 
@@ -106,16 +106,35 @@ function update_line(){
             .x(d => x(+d.year))
             .y(d => y(+d.value))
 
-        linechart.selectAll(".myLines")
+        const lengtharray = [];
+        
+        const mylines = linechart.selectAll(".myLines")
         .data(dataReady)
         .enter()
         .append("path")
             .attr("d", d => line(d.values))
-            .attr("stroke", d =>  myColor(d.name))//d.values[0].state === "Average" ? "var(--grey2)" :
+            .attr("stroke", d =>  myColor(d.name))
             .style("stroke-width", 2)
             .style("fill", "none")
             .attr("class", "myLines")
             .style("opacity", d => d.values[0].state === "Average" ? 0.4 : 1);
+        
+        
+        function eachlength () {
+            mylines.each(function(){
+                lengtharray.push(d3.select(this).node().getTotalLength()) 
+            })
+        };
+        eachlength();
+        const pathLength = d3.max(lengtharray);
+
+        mylines
+            .attr("stroke-dashoffset", pathLength)
+            .attr("stroke-dasharray", pathLength)
+            .transition()
+            .ease(d3.easeSin)
+            .duration(2500)
+            .attr("stroke-dashoffset", 0);
 
         // category label of each line
         linechart.selectAll(".myLabels")
@@ -126,9 +145,11 @@ function update_line(){
                 .datum(d => { return {name: d.name, value: d.values[d.values.length - 1]}; }) // keep only the last value of each time series
                 .attr("transform", d => "translate(" + x(d.value.year) + "," + y(d.value.value) + ")") // Put the text at the position of the last point
                 .attr("x", 12) // shift the text a bit more right
+                .style("font-size", 14)
+                .transition()
+                .delay(2500)
                 .text(d => d.value.state === "Average" ? "National " + d.name : d.value.state + " " + d.name)
                 .style("fill", d => myColor(d.name))
-                .style("font-size", 12)
                 .attr("class", "myLabels")
                 .style("opacity", d => d.value.state === "Average" ? 0.4 : 1);
         /* 
