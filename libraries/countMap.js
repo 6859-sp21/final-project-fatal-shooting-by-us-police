@@ -248,7 +248,7 @@ function renderCalendar(year, data) {
             tooltip.transition()
             .duration(30)
             .style("opacity", 1)
-            tooltip.html('<div style="margin-top: 0.2rem; display:flex; justify-content:flex-start; align-items:center;"><i class="fa fa-user fa-5x" aria-hidden="true "></i><div style="margin-left:30px">Age:'
+            tooltip.html('<div style="margin-top: 0.2rem; display:flex; justify-content:flex-start; align-items:center; font-size: 0.8rem"><i class="fa fa-user fa-5x" aria-hidden="true "></i><div style="margin-left:30px">Age: '
                  + d.age + "<br>Race: " + d.race + "<br>Location: " + d.city + ", "+ d.state + "<br>Flee: " + d.flee + "</div>" +'</div>')
             .style("color", colorIcon(d.race));
 
@@ -286,6 +286,7 @@ function renderCalendar(year, data) {
                 .duration(30)
                 .style("opacity", 1)
             tooltipState.html("<br>State: " + stateName + "<br>Deaths: " + (countByState.get(stateName) || '0') + "<br>Death Rank: " + rank)
+                        .style("font-size","0.8rem")
                         .style("color", colorChoose(stateName));
         }
 

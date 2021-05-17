@@ -128,7 +128,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     .padding(.4);
   box_g.append("g")
     .attr("transform", "translate(-20, 0)")
-    .style("font-size", "16px")
+    .style("font-size", "1rem")
     .call(d3.axisLeft(y).tickSize(0))
     .select(".domain").remove()
 
@@ -258,7 +258,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
         if (d.race == "White") return(myColorW(+d.R)) 
         if (d.race == "Hispanic") return(myColorH(+d.R)) 
       })
-      .attr("stroke", "var(--grey3)")
+      .attr("stroke", "var(--darkblue)")
       .on("mouseover", mouseover)
       .on("mousemove", mousemove)
       .on("mouseout", mouseleave)
@@ -271,10 +271,12 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .style("font-size", "14px");
   // Three function that change the tooltip when user hover / move / leave a cell
   function mouseover (d) {
-    // console.log(d);
+    box_g.selectAll("circle")
+      .filter(a => a.state === d.state)
+      .attr("stroke-width", 2);
     box_g.selectAll("circle")
       .filter(a => a.state !== d.state)
-      .style("opacity", 0.2);
+      .style("opacity", 0.15);
     bp_tooltip
       .transition()
       .duration(200)
@@ -282,8 +284,8 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     bp_tooltip
         .html("<span style='font-size:0.7rem; display: block;color:grey'>"+ d.race + "</span>" + "<span style='color:grey'> State: </span>" + d.state + 
         "<span style='color:grey'> Death Rate: </span>" + d3.format("(.1f")(d.R)) // + d.Prior_disorder + "<br>" + "HR: " +  d.HR)
-        .style("left", (d3.event.pageX+30)  + "px")
-        .style("top", (d3.event.pageY+30)  + "px");
+        .style("left", (d3.event.pageX+20)  + "px")
+        .style("top", (d3.event.pageY+20)  + "px");
   }
   function mousemove (d) {
     bp_tooltip
@@ -292,7 +294,8 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
   }
   function mouseleave (d) {
     box_g.selectAll("circle")
-      .style("opacity", 1);
+      .style("opacity", 1)
+      .attr("stroke-width", 1);
     bp_tooltip
       .transition()
       .duration(200)
