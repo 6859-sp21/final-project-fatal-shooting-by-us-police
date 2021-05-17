@@ -18,10 +18,16 @@
 
 
 body {
-  font-family: 'Roboto Mono', monospace;
+  /* 'Roboto Mono', monospace; */
+  font-family: 'Roboto Slab' !important;
+  /* font-family: "PostoniStandardRegular",Georgia,serif; */
   background-color: var(--darkblue) !important;
   color: var(--grey2);
-  font-size: .8rem;
+  font-size: 1rem;
+}
+
+h5{
+  font-size: 1.5rem;
 }
 
 .notextdec{
@@ -40,7 +46,7 @@ body {
 #section7,
 #section8,
 #section9,
-#section10，
+#section10,
 #section11
 {
   display: flex;
@@ -87,11 +93,17 @@ src: url('http://fonts.googleapis.com/css?family=Ubuntu');
   justify-self: center;
   font-size: 30px;
 }
+.header2{
+  font-family: 'Roboto', sans-serif !important;
+  color: var(--grey2);
+  font-weight: 600 !important;
+  margin-bottom: -0.08rem;
+}
 .header {
   font-family: 'Roboto', sans-serif !important;
   color: whitesmoke;
   font-weight: 700 !important;
-  margin-bottom: -0.1rem;
+  margin-bottom: -0.08rem;
 }
 .subheader {
   font-size: .8rem;
@@ -147,8 +159,8 @@ right: 60px;
 opacity: 1.0
 } 
 .title{
-color: var(--grey1);
-font-size: 16px;
+color: var(--red2);
+font-size: 1.2rem;
 font-weight: bold;
 margin-bottom: 10px;
 }
@@ -310,13 +322,14 @@ ol li {
   -o-transform: scale(1);
   transform: scale(1);
   opacity :0.8;
+  
 }
 #cd-vertical-nav a:hover .cd-label {
   opacity: 1;
   z-index: 0;
 }
 #cd-vertical-nav a.is-selected .cd-dot{
-  background-color: var(--red2);
+  background-color: #ffffff;
   opacity: 1;
 }
 #cd-vertical-nav a.is-selected .cd-label {
@@ -374,7 +387,7 @@ ol li {
 }
 
 a{
-  color: var(--red2);
+  color: var(--red2) !important;
 }
 
 .fa{
@@ -567,15 +580,6 @@ a {
 .cd-horizontal-timeline .events a.older-event::after {
   border-color: var(--timeline);
 }
-@media only screen and (min-width: 1100px) {
-  .cd-horizontal-timeline {
-    margin: 6em auto;
-  }
-  .cd-horizontal-timeline::before {
-    /* never visible - this is used in jQuery to check the current MQ */
-    content: 'desktop';
-  }
-}
 
 .cd-timeline-navigation a {
   /* these are the left/right arrows to navigate the timeline */
@@ -713,6 +717,7 @@ a {
   font-size: 3em !important;
   font-weight: 700;
   line-height: 1.2; */
+  
 }
 .cd-horizontal-timeline .events-content em {
   color: var(--timeline);
@@ -724,13 +729,13 @@ a {
   content: '- ';
 }
 .cd-horizontal-timeline .events-content p {
-  font-size: 1.5em !important;
+  font-size: 1.2rem;
   color: #fff;
 }
 .cd-horizontal-timeline .events-content em, .cd-horizontal-timeline .events-content p {
   line-height: 1.6;
 }
-@media only screen and (min-width: 768px) {
+/* @media only screen and (min-width: 768px) {
   .cd-horizontal-timeline .events-content h2 {
     font-size: 7rem;
   }
@@ -740,7 +745,7 @@ a {
   .cd-horizontal-timeline .events-content p {
     font-size: 1.8rem;
   }
-}
+} */
 
 @-webkit-keyframes cd-enter-right {
   0% {

@@ -573,7 +573,7 @@
     selection.each(function (rawData) {
       // create svg and give it a width and height
       svg = d3.select(this).append('svg')
-            .attr('width', w + margin.left + margin.right)
+            .attr('width', w + margin.left)
             .attr('height',50)
             .attr('id','legendsvg');
 
@@ -694,6 +694,7 @@
               })  
           .text(function(d){ return d})
           .attr("text-anchor", "left")
+          .style("font-size", "14px")
           .style("alignment-baseline", "middle")
       .transition()
       .duration(600);
@@ -711,7 +712,7 @@
         .append("circle")
         .attr("cx", function(d,i){ if (i == 0){return 10;} else if(i == 1) {return 120} 
         	else if (i ==2){return 200}
-        	else{return 290}  
+        	else{return 285}  
         })
         .attr("cy", 25) // 100 is where the first dot appears. 25 is the distance between dots
         .attr("r", 5)
@@ -731,7 +732,7 @@
             .attr("x", function(d,i){ 
             	if (i == 0){return 20;} else if(i == 1) {return 130} 
         	else if (i ==2){return 210}
-        	else{return 300}  
+        	else{return 295}  
             })
             .attr("y", 25)
             .style("fill", function (d) {          
@@ -744,7 +745,7 @@
                 else if  (d == 'Unknown') {return "Unknown";}
                 else if (d == 'Car') {return "By car"}
                 else {return "By foot";}})
-            .style("font-size", "12px")
+            .style("font-size", "14px")
             .attr("text-anchor", "left")
             .style("alignment-baseline", "middle");
 
