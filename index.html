@@ -38,7 +38,7 @@
             <li><a href="#section3"><span class="cd-dot"></span><span class="cd-label">Across Time</span></a></li>
             <li><a href="#section4"><span class="cd-dot"></span><span class="cd-label">Across Country</span></a></li>
             <li><a href="#section5"><span class="cd-dot"></span><span class="cd-label">Analysis</span></a></li>
-            <li><a href="#section6"><span class="cd-dot"></span><span class="cd-label">Rate Map</span></a></li>
+            <li><a href="#section6"><span class="cd-dot"></span><span class="cd-label">Race</span></a></li>
             <li><a href="#section7"><span class="cd-dot"></span><span class="cd-label">Rate Map</span></a></li>
             <li><a href="#section8"><span class="cd-dot"></span><span class="cd-label">Boxplot</span></a></li>
             <li><a href="#section9"><span class="cd-dot"></span><span class="cd-label">Armed Status</span></a></li>
@@ -87,16 +87,18 @@
         <div class="container flex-item" data-aos="fade-in">
             <!-- <div class="heading" style="margin-bottom:10%;">
             <div class="header">ACROSS TIME</div>
-            </div>
-            <p style="font-size: 1.3rem;text-align: center;">There have been <strong style="color: var(--red2);font-size: 1.9rem">341</strong> days in 2019 where police killed someone</p><br/>
-            -->
-            <p style="font-size: 1.3rem;text-align: center;">Hover your mouse on calendar grid to view how many death are there each day in <text id="S_Year">2015</text>.</p><br/>
+            </div> -->
+            <p style="font-size: 1.3rem;text-align: center;">There have been <strong style="color: var(--red2);font-size: 1.9rem">341</strong> days in <text id="S_Year">2015</text> where police killed someone</p><br/>
+           
+            <!-- <p style="font-size: 1.3rem;text-align: center;">Hover your mouse on calendar grid to view how many death are there each day in <text id="S_Year">2015</text>.</p><br/> -->
             <div id="calendar"></div>
+            <!-- <div id="legend_cal"></div> -->
             <div class="row justify-content-center" style="margin-top: 15px">
                 <svg id="legendcalendar"></svg>
             </div>
         </div>
     </section>
+
     <!-- 4. Death Map -->
     <section id="section4" class="nav-section cd-section">
         <div class="container" data-aos="fade-in">
@@ -119,13 +121,9 @@
                         <div class="col-sm-7 d3-geomap" style="padding-right: 0px; text-align: center;" id="mappppp">
                             <div>>> Click the state to view general information</div>
                             <div class="row justify-content-center" > 
-                                <!-- <svg id="legendddd" style="margin-bottom: -18px;"></svg> -->
-                                <!-- <div style="margin-top: 0.5rem;">Death Rank: <b style="color: #ca3e1c;">1</b>, <b style="color: #FFC6B2;">2</b>, 
-                                    <b style="color: #496C99;">3</b>, <b style="color: #da8671;">4</b>, <b style="color: #96ABC6;">5</b>
-                                </div> -->
                             </div>
                             <div class="row justify-content-center" style="margin-top: 15px">
-                                <svg id="legendddd"></svg>
+                                <!-- <svg id="legendddd"></svg> -->
                             </div>
                         </div>
                     </div>
@@ -133,6 +131,7 @@
             </div>
         </div>
     </section>
+
     <!-- 5. Details -->
     <section id="section5" class="cd-section nav-section">
         <div class="container" data-aos="fade-in">
@@ -166,8 +165,7 @@
     	</div>
     </section>
     <!-- 6. Race -->
-    <section id="section6" class= "cd-section nav-section" style="background-image: url('data/race.jpg'); 
-    background-position: center bottom; background-repeat: no-repeat; background-size: cover; padding-top: 35vh; padding-bottom: 35vh;">
+    <section id="section6" class= "cd-section nav-section">
         <div class="container flex-item" data-aos="fade-in" >
             <p style="font-size: 1.5rem;" >
                 "Victims identifying as Black, Indigenous, or People of Color (BIPOC), 
@@ -214,6 +212,7 @@
                 </div> 
            </div>
     </section>
+
     <!-- 8. Boxplot -->
     <section id="section8" class= "cd-section nav-section" >
          <div class="container flex-item" data-aos="fade-in">
@@ -228,13 +227,13 @@
             <h2 class="header">ARMED STATUS</h2>
             <h5 style="color: var(--red2);">People of Color, whether armed or not, are most likely to be killed by police</h5>
             <br>
-            <div class="row">
-                <div class="col-sm-6" style="display: flex; flex-direction: column; align-items: center;">
+            <div class="row" style="display: flex; justify-content: space-between;">
+                <div style="display: flex; flex-direction: column; align-items: center;">
                     <p style="font-size: 1rem;"><span style="color: var(--red2); font-size: 2rem;">2.6X</span> the death rate of white people</p>
                     <div id="barChart"></div>
                     <p>police killings per 1 million population</p>
                 </div>
-                <div class="col-sm-6" style="display: flex; flex-direction: column; align-items: center;">
+                <div style="display: flex; flex-direction: column; align-items: center;">
                     <p style="font-size: 1rem;"><span style="color: var(--red2); font-size: 2rem;">1.3X</span> more likely unarmed than white people</p>
                     <div id="armedChart"></div>
                     <p>Percentage Killed by Police Unarmed</p>
@@ -242,10 +241,147 @@
        </div>
    </section>
    <!-- 10. actions -->
-   <section id="section10" class= "cd-section nav-section" >
-        <div class="container flex-item" data-aos="fade-in">
-            <h2 class="header">ACTIONS</h2>
-            <h5 style="color: var(--red2);">National protests against police violence</h5>
+   <section id="section10" class= "cd-section nav-section">
+       <div class="container flex-item" data-aos="fade-in">
+           <h2 class="header">ACTIONS</h2>
+           <h5 style="color: var(--red2);">National protests against police violence</h5>
+           <section class="cd-horizontal-timeline" style="font-family:'Ubuntu', sans-serif;font-size: 0.8em;">
+            <div class="timeline">
+                <div class="events-wrapper">
+                    <div class="events">
+                        <a href="#0" data-date="01/12/2013" class="selected" style="font-size:14px">2013</a>
+                        <a href="#0" data-date="01/12/2014" style="font-size:14px">2014</a>
+                        <a href="#0" data-date="01/12/2015" style="font-size:14px">2015</a>
+                        <a href="#0" data-date="01/07/2016" style="font-size:14px">Jul 2016</a>
+                        <a href="#0" data-date="01/02/2017" style="font-size:14px">Feb 2017</a>
+                        <a href="#0" data-date="01/05/2018" style="font-size:14px">May 2018</a>
+                        <a href="#0" data-date="01/09/2018" style="font-size:14px">Sep 2018</a>
+                        <a href="#0" data-date="01/02/2019" style="font-size:14px">Feb 2019</a>
+                        <a href="#0" data-date="06/06/2020" style="font-size:14px">Jun 2020</a>
+                        <a href="#0" data-date="01/04/2021" style="font-size:14px">Apr 2021</a>
+
+                        <span class="filling-line" aria-hidden="true"></span>
+                    </div> <!-- .events -->
+                </div> <!-- .events-wrapper -->
+
+                <ul class="cd-timeline-navigation">
+                    <li><a href="#0" class="prev inactive">Prev</a></li>
+                    <li><a href="#0" class="next">Next</a></li>
+                </ul> <!-- .cd-timeline-navigation -->
+            </div> <!-- .timeline -->
+
+            <div class="events-content">
+                <ol>
+                    <li class="selected" data-date="01/12/2013">
+                        <h2>Black Lives Matter Movement</h2>
+                        <em>2013</em>
+                        <p>
+                            The Black Lives Matter movement began in 2013, following the death of Trayvon Martin, an African-American teenager who was shot while walking to a family friend's house, and the subsequent acquittal of George Zimmerman, the man who shot him.
+                            </br></br>
+                            The campaign was co-founded by three Black women: Alicia Garza, Patrisse Cullors, and Opal Tometi, as a response to the police killings of Black people. The phrase "black lives matter" was first used in a Facebook post by Garza after Zimmerman was found not guilty, and was the inspiration for the campaign. Cullors recognised the power of Garza's words and created the hashtag #BlackLivesMatter, and the campaign was born.
+                        </p>
+                    </li>
+
+                    <li data-date="01/12/2014">
+                        <h2>Movement Gathered Pace</h2>
+                        <em>2014</em>
+                        <p>
+                            The movement quickly gathered pace, with interest and momentum spiking every time a Black person was killed as a result of an altercation with police.
+                            </br>
+                            In 2014, Black Lives Matter protested against the deaths of numerous Black and African-American people. In July that year, Eric Garner died in New York City after a policeman put him in a chokehold while arresting him. Then, in August, unarmed teenager Michael Brown was killed by a gunshot from a police officer, Darren Wilson (it was later decided that there was not enough evidence to charge Wilson). Both peaceful protests and riots followed, much of which was done under the banner and hashtag of Black Lives Matter.
+                            </br></br>
+                            In response, co-founder Patrisse Cullors organised the Black Life Matters Ride, which drew a gathering of 600 people and sparked the founding of more localised Black Lives Matter groups and the dissemination of the campaign into a network.
+                        </p>
+                    </li>
+
+                    <li data-date="01/12/2015">
+                        <h2>Protests to highlight injustices faced by LGBT Communities</h2>
+                        <em>2015</em>
+                        <p>
+                            The following year saw another spate of Black people killed by police officers in the USA, including Walter Scott, Freddie Gray, and Meagan Hockaday. Black Lives Matter protested against these and many more. They also organised protests to highlight the injustices faced by Black women and Black transgender women. By the end of 2015, 21 transgender people had been killed that year in the USA, a record number at the time, and 13 of the victims were Black.
+                        </p>
+                    </li>
+
+                    <li data-date="01/07/2016">
+                        <h2>Protests against Police Brutality</h2>
+                        <em>July, 2016</em>
+                        <p>
+                            2016 saw Black Lives Matter organise many more protests against police brutality towards Black people. Those whose deaths occurred due to police actions included Deborah Danner and Alton Sterling. Early July saw over 100 protests take place across America following Sterling's death on July 5th, and Philandro Castile's shooting the next day.
+                            </br> </br>
+                            This year also saw major American sports stars lend their voices to the cause of Black Lives Matter. In July 2016, basketball players including LeBron James and Carmelo Anthony opened an awards ceremony by speaking about recent deaths of Black people, saying: "Enough is enough." Then, from August, many sports stars began taking part in protests during national anthems at sports games, beginning with Colin Kaepernick, who knelt during the anthem ahead of an NFL game.
+                        </p>
+                    </li>
+
+                    <li data-date="01/02/2017">
+                        <h2>Black History Month Celebration</h2>
+                        <em>Feb, 2017</em>
+                        <p>
+                            Black History Month is celebrated in February in the USA (it's marked in October in the UK). In 2017, Black Lives Matter put on their first art exhibition timed to coincide with Black History Month in the US state of Virginia. It featured the work of over 30 Black artists and creators.
+                            </br> </br>
+                            Black Lives Matter protest not only the killings of Black people, but also some acquittals and 'not guilty' verdicts in those cases which make it to trial. In June, they held a protest after the officer accused of killing Philandro Castile the year before was found not guilty.
+                            </br> </br>
+                            In August, Black Lives Matter campaigners were among counter-protestors at a white supremacist 'Unite The Right' rally in Charlottesville, Virginia.
+                        </p>
+                    </li>
+
+                    <li data-date="01/05/2018">
+                        <h2>hashtag #BlackLivesMatter</h2>
+                        <em>May, 2018</em>
+                        <p>
+                            In an interview with ABC News marking five years of Black Lives Matter, Cullors explained the impact the organisation had had on other causes. She said: “[BLM] has popularised civil disobedience and the need to put our bodies on the line... With things like the Women’s March, and Me Too, and March for our Lives, all of these movements, their foundations are in Black Lives Matter.”
+                            </br> </br>
+                            By May 1st, 2018, a study found that the hashtag #BlackLivesMatter had been used nearly 30 million times on Twitter since the first instance in 2013.
+                            </br> </br>
+                            As they marked five years of action, Black Lives Matter continued to highlight the deaths of Black people who had lost their lives at the hands of US police that year, including Grechario Mack and Kenneth Ross Jr.
+                        </p>
+                    </li>
+
+
+                    <li data-date="01/09/2018">
+                        <h2>Stephon Clark</h2>
+                        <em>September, 2018</em>
+                        <p>
+                            Marking the six-month anniversary of the murder of Stephon Clark, Black Lives Matter Global Network activists used 175 caskets to represent these lives and to magnify the impact that these fatalities have on our community. This action was intended to highlight the violence inflicted upon Black bodies by the police force and the urgent need to transform policing in America, and to call for justice, transparency, and accountability. We demanded an increased interest in investing in our communities including promoting better education and resources and divesting from over-policing. BLM activists were joined by: Women for Equality, Voices of the Youth, APTP, PICO, BSU Sacramento City, AGNT, NAACP, SURJ, HIP, Immigration Coalition, Brown Berets, and a host of others.
+                        </p>
+                    </li>
+
+
+                    <li data-date="01/02/2019">
+                        <h2>#Free21Savage</h2>
+                        <em>Februray, 2019</em>
+                        <p>
+                            In February 2019, the rapper 21 Savage was arrested and detained by the US's immigration agency, ICE. As a result, Cullors convened a group of 60 high profile stars from the music and entertainment worlds to advocate for his release.
+                            </br> </br>
+                            Then, in May, Oklahoma teenager Isaiah Lewis was shot by police and killed. Days later, Black Lives Matter held a 100-strong rally in protest.
+                            </br> </br>
+                            Following Sheyaa Bin Abraham-Josephs&#39s detainment by the Immigration Customs and Enforcement (ICE) agency, Black Lives Matter Global Network joined with a consortium of nearly 60 celebrities, top human rights organizations (including Color of Change, BAJI, UndocuBlack Network, Define American, and United We Dream), and communications and legal teams to advocate for the release of Abraham-Joseph, to continue to pressure ICE, and to draw attention to the need for immigration reform the unfair targeting of Black immigrants and the 600,000 undocumented Black immigrants in the US.
+                        </p>
+                    </li>
+
+
+                    <li data-date="06/06/2020">
+                        <h2>Black Lives Matter protests over the death of George Floyd</h2>
+                        <em>June, 2020</em>
+                        <p>
+                            The recent Black Lives Matter protests peaked on June 6, when half a million people turned out in nearly 550 places across the United States. That was a single day in more than a month of protests that still continue to that day.
+                            </br> </br>
+                            Four recent polls including one released this week by Civis Analytics, a data science firm that works with businesses and Democratic campaigns, suggest that about 15 million to 26 million people in the United States have participated in demonstrations over the death of George Floyd and others in recent weeks.
+                            </br> </br>
+                            These figures would make the recent protests the largest movement in the country&#39s history, according to interviews with scholars and crowd-counting experts.
+                        </p>
+                    </li>
+
+                    <li data-date="01/04/2021">
+                        <h2>Black Lives Matter nominated for Nobel Peace Prize</h2>
+                        <em>April, 2021</em>
+                        <p>
+                            In January, the Black Lives Matter movement was nominated for the Nobel Peace Prize by Norwegian MP Petter Eide. His written nomination noted that, “awarding the peace prize to Black Lives Matter, as the strongest global force against racial injustice, will send a powerful message that peace is founded on equality, solidarity and human rights, and that all countries must respect those basic principles.
+                            </br> </br>
+                            On 20 April, former police officer Derek Chauvin was found guilty on all three counts relating to his killing of George Floyd second and third-degree murder, and manslaughter. The jury reached the verdict unanimously after 10-and-a-half hours of deliberations. Crowds who were gathered at the spot where Floyd was killed, outside the courtroom and across the US erupted into cheers as the verdict was read out.</p>
+                    </li>
+                </ol>
+            </div> <!-- .events-content -->
+        </section>
         </div>
     </section>
     <!-- 11. end -->
@@ -255,6 +391,7 @@
             <h5 style="color: var(--red2);">Together, we can end the police violence</h5>
         </div>
     </section>
+
     <!-- Footer-->
     <section id="section00" style="margin-top: 100px;">
         <div class="container">
@@ -280,6 +417,7 @@
     </script>
 	<script src="libraries/index.js"></script>
     <script src="libraries/color-legend.js"></script>
+    <!-- <script src="libraries/legendCalendar.js"></script> -->
     <script src="libraries/scroller.js"></script>
     <script src="libraries/sections.js"></script>
     <script src="libraries/countMap.js"></script>
@@ -288,12 +426,9 @@
     <script src="libraries/cardMap.js"></script>
     <script src="libraries/line.js"></script>
     <script src="libraries/boxplot.js"></script>
-<<<<<<< HEAD
     <script src="libraries/armed.js"></script>
     <script src="libraries/barChart.js"></script>
-=======
     <script src="libraries/timeline.js"></script>
->>>>>>> 8c5936f654b0fa18c7fa6ad0b2cda9948c5d5eb7
     <!-- aos -->
     <script src="libraries/aos.js"></script>
     <script src="libraries/animate.js"></script>

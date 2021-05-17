@@ -13,6 +13,7 @@
   --grey3: #535353;
   --grey2: rgb(185, 185, 185);
   --grey1: #D9D9D9;
+  --timeline: #da8671;
 }
 
 
@@ -436,7 +437,7 @@ a {
   position: relative;
   height: 100px;
   width: 100%;
-  max-width: 900px;
+  /* max-width: 900px; */
   margin: 0 auto;
 }
 .cd-horizontal-timeline .events-wrapper {
@@ -481,7 +482,7 @@ a {
   top: 0;
   height: 100%;
   width: 100%;
-  background-color: #FF3D7F;
+  background-color: var(--timeline);
   -webkit-transform: scaleX(0);
   -moz-transform: scaleX(0);
   -ms-transform: scaleX(0);
@@ -548,18 +549,18 @@ a {
   transition: background-color 0.3s, border-color 0.3s;
 }
 .no-touch .cd-horizontal-timeline .events a:hover::after {
-  background-color: #FF3D7F;
+  background-color: var(--timeline);
   border-color: #fff;
 }
 .cd-horizontal-timeline .events a.selected {
   pointer-events: none;
 }
 .cd-horizontal-timeline .events a.selected::after {
-  background-color: #FF3D7F;
-  border-color: #FF3D7F;
+  background-color: var(--timeline);
+  border-color: var(--timeline);
 }
 .cd-horizontal-timeline .events a.older-event::after {
-  border-color: #FF3D7F;
+  border-color: var(--timeline);
 }
 @media only screen and (min-width: 1100px) {
   .cd-horizontal-timeline {
@@ -625,7 +626,7 @@ a {
   color: #fff;
 }
 .no-touch .cd-timeline-navigation a:hover {
-  border-color: #FF3D7F;
+  border-color: var(--timeline);
 }
 .cd-timeline-navigation a.inactive {
   cursor: not-allowed;
@@ -634,7 +635,7 @@ a {
   background-position: 0 -16px;
 }
 .no-touch .cd-timeline-navigation a.inactive:hover {
-  border-color: #FF3D7F;
+  border-color: var(--timeline);
 }
 
 .cd-horizontal-timeline .events-content {
@@ -693,16 +694,23 @@ a {
   animation-direction: reverse;
 }
 .cd-horizontal-timeline .events-content li > * {
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: 0 auto;
 }
+
 .cd-horizontal-timeline .events-content h2 {
+  font-family: 'Roboto', sans-serif !important;
+  color: whitesmoke;
+  font-weight: 700 !important;
+  font-size: 3em !important;
+/*   
   font-weight: bold;
   font-size: 3em !important;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.2; */
 }
 .cd-horizontal-timeline .events-content em {
+  color: var(--timeline);
   display: block;
   font-style: italic;
   margin: 10px auto;
