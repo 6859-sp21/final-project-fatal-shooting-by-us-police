@@ -28,6 +28,11 @@ body {
   font-family: sans-serif !important;
 }
 
+.mycontainer{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
 #section2,
 #section3,
 #section4,
