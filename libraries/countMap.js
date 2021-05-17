@@ -106,6 +106,8 @@ function renderCalendar(year, data) {
 
 
     const countByDate = d3.rollup(data, v => v.length, d => new Date(d.date));
+    document.getElementById("dayWithDeathPerYear").innerHTML = countByDate.size;
+
 
   const cellMargin = 2,
       cellSize = 13;
