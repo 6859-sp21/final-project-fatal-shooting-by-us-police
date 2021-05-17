@@ -75,16 +75,16 @@
 
     <!-- 3. Calendar -->
     <div>
-        <div class="subheader" style="position: sticky; top: 10px; background: darkslateblue; width:1000px;margin: auto;">
-                <div style="display: flex; align-items: stretch; font-size: 18px">
-                        <span>>>> Explore more information about killed citizens per year by dragging the slider</span>
+        <div class="subheader" style="position: sticky; top: 10px; background:#101627; width:100%; z-index:999">
+                <div style="margin-left: 200px; margin-right: 150px; font-size: 18px;">
+                        <p>>>> Explore more information about killed citizens per year by dragging the slider</p>
                 </div></br>
-                <div style="display: flex; font-size: 18px;">
-                        <div id="filter-year">
-                            <input id="year-filter" type="range" class="custom-range" value="2015" min="2015" max="2019" step="1" v-model="year">
-                            </br>
-                            Year Selected: <text id="year-selected" style="padding-left: 10px">2015</text>
-                        </div>
+                <div style="margin-top:0px; margin-left: 200px; margin-right: 300px;font-size: 18px;">
+                    <div id="filter-year">
+                        <input id="year-filter" type="range" class="custom-range" value="2015" min="2015" max="2019" step="1" v-model="year">
+                        </br>
+                        <div style = "margin-top:0px;margin-left: 300px; margin-right: 150px;">Year Selected: <text id="year-selected" style="padding-left: 5px">2015</text></div>
+                    </div>
                 </div>
         </div>
 
@@ -104,7 +104,7 @@
             </div>
         </div>
     </section>
-        </div>
+    </div>
 
     <!-- 4. Death Map -->
     <div>
