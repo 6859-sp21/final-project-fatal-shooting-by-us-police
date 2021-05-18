@@ -167,8 +167,25 @@ function renderCalendar(year, data) {
     .domain([0, d3.max(countByDate.values())])
     .interpolator(d3.interpolateReds);
 
-    legend({color: colorcal, width: 330, svgIn: d3.select('#legendcalendar'),title: "Number of Killed Citizens per Day"});
+    var svgcal = d3.select("svg");
 
+    svgcal.append("g")
+      .attr("class", "legendLinear")
+      .attr("transform", "translate(20,20)");
+
+    var legendLinear = d3.legendColor()
+      .shapeWidth(30)
+      .cells([0, 1, 2, 4, 8])
+      .orient('horizontal')
+      .scale(colorcal)
+        .labelFormat('.0f');
+
+    d3.select("#legendcalendar").call(legendLinear);
+    d3.selectAll('text.label').style('fill','lightgrey');
+    d3.select('text.legendTitle').style('fill','lightgrey');
+
+    /*legend({color: colorcal, width: 330, svgIn: d3.select('#legendcalendar'),title: "Number of Killed Citizens per Day"});
+    */
     rect.filter(d => countByDate.has(d))
         .style("fill", d => colorcal(countByDate.get(d)));
 }
