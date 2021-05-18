@@ -39,6 +39,10 @@ h5{
   margin-right: 10%;
 }
 
+.legendLinear text.label {
+   fill: '#D9D9D9'
+}
+
 #section2,
 #section3,
 #section4,
