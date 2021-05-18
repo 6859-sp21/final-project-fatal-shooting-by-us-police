@@ -38,7 +38,13 @@ var box_svg = d3.select("#horizontal_boxplot")
   .append("svg")
     .attr("width", width + bpmargin.left + bpmargin.right)
     .attr("height", height + bpmargin.top + bpmargin.bottom)
+    // .attr("transform",
+    //       "translate(" + bpmargin.left + "," + bpmargin.top + ")")
     .call(responsivefy);
+
+var box_g = box_svg.append("g")
+  .attr("transform",
+      "translate(" + bpmargin.left + "," + bpmargin.top + ")");
 
 
 // Read the data and compute summary statistics for each specie
@@ -94,13 +100,15 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     render(bpdata);
   })
 
-  function render (data){
-    box_svg.selectAll("g").remove();
-    box_svg.selectAll("circle").remove();
+  function render (bpdata){
+    // box_svg.selectAll("g").remove();
+    // box_svg.selectAll("circle").remove();
+    box_svg.selectAll(".xscale").remove()
+    box_svg.selectAll(".yscale").remove()
+    // box_svg.selectAll("line").remove()
+    // box_svg.selectAll("rect").remove()
     box_svg.selectAll("text").remove();
-    var box_g = box_svg.append("g")
-      .attr("transform",
-          "translate(" + bpmargin.left + "," + bpmargin.top + ")");
+
   // Compute quartiles, median, inter quantile range min and max --> these info are then used to draw the box.
   var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
     .key(function(d) { return d.race;})
@@ -128,6 +136,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     .domain(["Black", "White", "Hispanic"])
     .padding(.4);
   box_g.append("g")
+   .attr("class","yscale")
     .attr("transform", "translate(-20, 0)")
     .style("font-size", "1rem")
     .call(d3.axisLeft(y).tickSize(0))
@@ -140,6 +149,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
     .domain([min,max])
     .range([0, width])
   box_g.append("g")
+    .attr("class","xscale")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).ticks(5))
     .select(".domain").remove();
@@ -161,22 +171,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
   var s = d3.scaleLinear()
   .range([4, 15])
   .domain([d3.min(bpdata, function (d) { return +d.P; }),d3.max(bpdata, function (d) { return +d.P; })])  
-
-  // Show legend
-  // box_svg.append("g")
-  //   .attr("class", "legendSize")
-  //   .attr("transform", "translate(250, 10)");
-
-  // var legendSize = d3.legendSize()
-  //   .scale(s)
-  //   .shape('circle')
-  //   .shapePadding(100)
-  //   .labelOffset(20)
-  //   .orient('horizontal')
-  //   .;
-
-  // box_svg.select(".legendSize")
-  //   .call(legendSize);
+  // Size Legend
   var minP = d3.min(bpdata, function (d) { return +d.P; })
   var maxP = d3.max(bpdata, function (d) { return +d.P; })
   var meanP1 = (maxP - minP)/3
@@ -203,11 +198,18 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .style('fill', 'var(--grey2)');
 
   // Show the main horizontal line
-  box_g
-    .selectAll("horizLines")
-    .data(sumstat)
-    .enter()
-    .append("line")
+  var my_hor = box_g.selectAll(".horizLines")
+                      .data(sumstat);
+  my_hor.exit().remove();
+  var enter = my_hor.enter()
+                     .append("g")
+                     .attr("class","horizLines")
+  enter.append("line").attr("class","horline")   
+  my_hor = my_hor.merge(enter)
+ 
+  my_hor.select(".horline")
+      .transition()
+      .duration(1000)
       .attr("x1", function(d){return(x(d.value.min))})
       .attr("x2", function(d){return(x(d.value.max))})
       .attr("y1", function(d){return(y(d.key) + y.bandwidth()/2)})
@@ -217,11 +219,18 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .style("width", 40)
 
   // rectangle for the main box
-  box_g
-    .selectAll("boxes")
-    .data(sumstat)
-    .enter()
-    .append("rect")
+  var my_rects = box_g.selectAll(".boxes")
+                      .data(sumstat);
+  my_rects.exit().remove();
+  var enter = my_rects.enter()
+                     .append("g")
+                     .attr("class","boxes")
+  enter.append("rect").attr("class","boxes_rect")   
+  my_rects = my_rects.merge(enter)
+ 
+  my_rects.select(".boxes_rect")
+      .transition()
+      .duration(1000)
         .attr("x", function(d){return(x(d.value.q1))}) // console.log(x(d.value.q1)) ;
         .attr("width", function(d){ ; return(x(d.value.q3)-x(d.value.q1))}) //console.log(x(d.value.q3)-x(d.value.q1))
         .attr("y", function(d) { return y(d.key); })
@@ -231,11 +240,19 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
 
 
   // Show the median
-  box_g
-    .selectAll("medianLines")
-    .data(sumstat)
-    .enter()
-    .append("line")
+  var my_median = box_g.selectAll(".medianLines")
+                      .data(sumstat);
+  my_median.exit().remove();
+  var enter = my_median.enter()
+                     .append("g")
+                     .attr("class","medianLines")
+  enter.append("line").attr("class","medianline")   
+
+  my_median = my_median.merge(enter)
+ 
+  my_median.select(".medianline")
+      .transition()
+      .duration(1000)
       .attr("y1", function(d){return(y(d.key))})
       .attr("y2", function(d){return(y(d.key) + y.bandwidth())})
       .attr("x1", function(d){return(x(d.value.median))})
@@ -244,14 +261,33 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
       .style("width", 80)
 
 
-  // Add individual points with jitter
+
+  // draw circles
   var jitterWidth = 50;
-  box_g.selectAll("indPoints")
-    .data(bpdata)
-    .enter()
-    .append("circle")
+
+  var my_circles = box_g.selectAll(".indPoints")
+                      .data(bpdata);
+
+  my_circles.exit().remove();
+
+  // enter new circle
+  var enter = my_circles.enter()
+                     .append("g")
+                     .attr("class","indPoints")
+
+  //append to new group
+  enter.append("circle").attr("class","circledot")   
+
+  //merge and remove
+  my_circles = my_circles.merge(enter)
+
+
+ 
+  my_circles.select(".circledot")
+      .transition()
+      .duration(1000)
       .attr("cx", function(d){ return(x(d.R))})
-      .attr("cy", function(d){ return( y(d.race) + (y.bandwidth()/2) - jitterWidth/2 + Math.random()*jitterWidth )})
+      .attr("cy", function(d){ return( y(d.race) + (y.bandwidth()/2) - jitterWidth/2 + Math.random()*jitterWidth)})
       .attr("r", function(d){ return s(d.P)})
       .style("fill", function(d){ 
         if (d.race == "Black") return(myColorB(+d.R)) 
@@ -259,9 +295,12 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
         if (d.race == "Hispanic") return(myColorH(+d.R)) 
       })
       .attr("stroke", "var(--darkblue)")
-      .on("mouseover", mouseover)
+  
+  my_circles.on("mouseover", mouseover)
       .on("mousemove", mousemove)
       .on("mouseout", mouseleave)
+
+
 
   // create a tooltip
   var bp_tooltip = d3.select("#horizontal_boxplot")
