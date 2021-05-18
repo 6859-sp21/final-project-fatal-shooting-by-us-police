@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
 :root{
   --darkblue: #101627; /*#131531*/
   --blue3: #496C99;
@@ -18,8 +20,7 @@
 
 
 body {
-  /* 'Roboto Mono', monospace; */
-  font-family: 'Ubuntu' !important;
+  font-family: 'Ubuntu', sans-serif !important;
   /* font-family: "PostoniStandardRegular",Georgia,serif; */
   background-color: var(--darkblue) !important;
   color: var(--grey2);
@@ -57,11 +58,6 @@ h5{
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
   outline: none !important;
   box-shadow: none !important;
-}
-
-@font-face {
-font-family: "Ubuntu";
-src: url('http://fonts.googleapis.com/css?family=Ubuntu');
 }
 
 .btn-outline-secondary:hover {
