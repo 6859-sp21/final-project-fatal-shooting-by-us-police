@@ -430,8 +430,9 @@
 
     	  //set for bar text attributes
     	mygroup.select(".bar_text")
-            .attr("x",function(d){ return x0_scale(d) + (x0_scale.bandwidth()*0.15)})
+            .attr("x",function(d){ return x0_scale(d) + (x0_scale.bandwidth()*0.5)})
             .attr("y",function(d){return 395})
+            .style("text-anchor", "middle")
             // .attr("fill",function(d){ //fill dependent on whether survival is being shown.
             //   if(fill_type == "both"){
             //     return all_colours[d]
@@ -485,9 +486,10 @@
 
     	  //set for bar text attributes
     	mygroup.select(".bar_number")
-            .attr("x",function(d){ return x0_scale(d) + (x0_scale.bandwidth()*0.45)})
+            .attr("x",function(d){ return x0_scale(d) + (x0_scale.bandwidth()*0.6)})
             .attr("y",function(d){return y_scale(Math.floor(d3.max(my_data,function(m){if(m.race==d){return m.group_id}})/numpr)+1)})
             .attr("fill",'var(--grey1)')
+            .style("text-anchor", "middle")
             .text(function(d){ 
             	var group_count = my_data.filter(function(m){if(m.race==d){return m}}).length;
                 var armed_count =  my_data.filter(function(m){if(m.race==d && m.arm == "Armed"){return m}}).length;
@@ -712,7 +714,7 @@
         .append("circle")
         .attr("cx", function(d,i){ if (i == 0){return 10;} else if(i == 1) {return 120} 
         	else if (i ==2){return 200}
-        	else{return 285}  
+        	else{return 280}  
         })
         .attr("cy", 25) // 100 is where the first dot appears. 25 is the distance between dots
         .attr("r", 5)
@@ -732,7 +734,7 @@
             .attr("x", function(d,i){ 
             	if (i == 0){return 20;} else if(i == 1) {return 130} 
         	else if (i ==2){return 210}
-        	else{return 295}  
+        	else{return 290}  
             })
             .attr("y", 25)
             .style("fill", function (d) {          
