@@ -294,6 +294,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
         if (d.race == "White") return(myColorW(+d.R)) 
         if (d.race == "Hispanic") return(myColorH(+d.R)) 
       })
+      .style("opacity", 0.8)
       .attr("stroke", "var(--darkblue)")
   
   my_circles.on("mouseover", mouseover)
@@ -333,7 +334,7 @@ d3.csv("data/Race_Pop.csv").then(function(data) {
   }
   function mouseleave (d) {
     box_g.selectAll("circle")
-      .style("opacity", 1)
+      .style("opacity", 0.8)
       .attr("stroke-width", 1);
     bp_tooltip
       .transition()
