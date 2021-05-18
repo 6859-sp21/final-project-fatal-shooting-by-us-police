@@ -820,3 +820,17 @@ a {
     transform: translateX(0%);
   }
 }
+
+/* cursor */
+.typeText {
+  white-space: pre;
+}
+
+.typeText::after {
+  content: "|";
+  animation: none;
+}
+
+.showAnim.typeText::after {
+  animation: blink 1s step-end infinite;
+}
