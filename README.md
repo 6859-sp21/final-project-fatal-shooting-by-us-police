@@ -8,12 +8,12 @@
 
 
 <p align="center">
-  <img alt="Front" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/front.png" width="50%">
-  <img alt="Map" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/map.png" width="50%">
+  <img alt="Front" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/front.png" width="49%">
+  <img alt="Map" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/map.png" width="49%">
 </p>
 <p align="center">
-  <img alt="EDA" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/EDA.png" width="50%">
-  <img alt="Race" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/Race.png" width="50%">
+  <img alt="EDA" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/EDA.png" width="49%">
+  <img alt="Race" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/Race.png" width="49%">
 </p>
 
 # Development Process Overview
