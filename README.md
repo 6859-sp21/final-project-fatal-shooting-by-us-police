@@ -6,16 +6,16 @@
 
 [Link to Paper](https://drive.google.com/file/d/1kHmS7OeB1_yqae8iJnVJQ0yAZU1O5Zlr/view?usp=sharing)
 
-<div>
-<p>
-  <img align="left" alt="Front" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/front.png" width="45%">
-  <img align="right" alt="Map" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/map.png" width="45%">
+
+<p align="center">
+  <img alt="Front" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/front.png" width="45%">
+  <img alt="Map" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/map.png" width="45%">
 </p>
-<p>
-  <img align="left" alt="EDA" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/EDA.png" width="45%">
-  <img align="right" alt="Race" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/Race.png" width="45%">
+<p align="center">
+  <img alt="EDA" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/EDA.png" width="45%">
+  <img alt="Race" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/Race.png" width="45%">
 </p>
-</div>
+
 # Development Process Overview
 The main responsibility is divided as following, but everyone is responsible for crossing checking and updating each other's section when there are cross-references and interactions between different sections.
 * Rui Wang: UI/UX Design, Grid Map and Line Chart for death rate by race, Bar Charts for armed status, Circle Chart Interaction, Matrix Chart, Page Navigation, Cover Page, End Page, Scroller Interaction
