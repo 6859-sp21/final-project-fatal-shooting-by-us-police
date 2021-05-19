@@ -1,4 +1,6 @@
-# final-project-fatal-shooting-by-us-police
+# Fatal Shooting by US Police
+
+Group members: Rui Wang, Jiahui Tang, and Silin Zou
 
 [Link to Website](https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/)
 
