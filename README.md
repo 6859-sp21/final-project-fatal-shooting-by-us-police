@@ -7,12 +7,15 @@
 [Link to Paper](https://drive.google.com/file/d/1kHmS7OeB1_yqae8iJnVJQ0yAZU1O5Zlr/view?usp=sharing)
 
 <p align="center">
-  <img alt="Light" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/front.png" width="45%">
+  <img alt="Front" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/front.png" width="50%">
 &nbsp; &nbsp;
-  <img alt="Dark" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/map.png" width="45%">
+  <img alt="Map" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/map.png" width="50%">
 </p>
-
-![Image of EDA](https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/EDA.png) ![Image of Race](https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/Race.png)
+<p align="center">
+  <img alt="EDA" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/EDA.png" width="50%">
+&nbsp; &nbsp;
+  <img alt="Race" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/Race.png" width="50%">
+</p>
 
 # Development Process Overview
 The main responsibility is divided as following, but everyone is responsible for crossing checking and updating each other's section when there are cross-references and interactions between different sections.
