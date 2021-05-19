@@ -760,6 +760,31 @@
 
     svg.selectAll("text").remove();  
 
+    var glkeys = ["Armed","Unarmed"];
+
+    svg.selectAll("mydots")
+    .data(glkeys)
+    .enter()
+    .append("circle")
+    .attr("cx", function(d,i){ return 70 + i*150})
+    .attr("cy", 25) // 100 is where the first dot appears. 25 is the distance between dots
+    .attr("r", 5)
+    .style("fill", function(d){ return d === 'Armed' ? Ordinalcolor(2) : 'var(--grey1)';});
+
+    svg.selectAll("mylabels")
+      .data(glkeys)
+      .enter()
+      .append("text")
+        .attr("x", function(d,i){ return 90 + i*150})
+        .attr("y", 25)
+        .style("fill", function(d){ return d === 'Armed' ? Ordinalcolor(2): 'var(--grey1)';})
+        .text(function(d){ return d})
+        .attr("text-anchor", "left")
+        .style("alignment-baseline", "middle")
+        .style("font-size", "14px")
+      .transition()
+      .duration(600);
+
 
   }
 
