@@ -7,7 +7,7 @@
 
 # Development Process Overview
 The main responsibility is divided as following, but everyone is responsible for crossing checking and updating each other's section when there are cross-references and interactions between different sections.
-* Rui Wang: UI/UX Design, Grid Map, Line Chart, Boxplot Interaction, Matrix Chart, Navigation Dots, Cover Page, Footnote, Scroller Interaction
+* Rui Wang: UI/UX Design, Grid Map and Line Chart for death rate by race, Bar Charts for armed status, Circle Chart Interaction, Matrix Chart, Page Navigation, Cover Page, End Page, Scroller Interaction
 * Jiahui Tang: Calendar Heatmap Page, Geomap, Interaction between Gepmap and Matrix Chart, Sticky Sliding Bar and its Interactions, Interactive Timeline Page for Protests Progress
 * Silin Zou: Boxplot, Scrolling Analysis, EDA charts, and Interaction between EDA and Sliding Bar, Circle Chart and animations for Racial Disparity
 
@@ -60,7 +60,8 @@ The audiences received our motivation well and enjoyed browsing through our webs
 # Acknowledgement
 Data Source:
 * [Data Police shootings](https://www.kaggle.com/mrmorj/data-police-shootings) and [Police Violence & Racial Equity Dataset](https://www.kaggle.com/jpmiller/police-violence-in-the-us) retrieved from Kaggle, which is derived from database of every fatal shooting in the United States by a police officer. 
-* 
+* [Fatal Encounters](https://fatalencounters.org/our-visualizations/)
+* [Population Distribution by Race/Ethnicity](https://www.kff.org/other/state-indicator/distribution-by-raceethnicity/?dataView=1&activeTab=graph&currentTimeframe=0&startTimeframe=11&selectedDistributions=white--black--hispanic--total&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D)
 Analysis:
 * [Understanding the Extent of Police Abuse in the United States of America](https://www.kaggle.com/thedatabeast/understanding-the-extent-of-police-abuse-in-the-us?select=deaths_arrests_race.csv)
 * [Racial disparity in police shootings unchanged over 5 years](https://news.yale.edu/2020/10/27/racial-disparity-police-shootings-unchanged-over-5-years)
