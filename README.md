@@ -6,7 +6,11 @@
 
 [Link to Paper](https://drive.google.com/file/d/1kHmS7OeB1_yqae8iJnVJQ0yAZU1O5Zlr/view?usp=sharing)
 
-![Image of Front](https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/front.png) ![Image of Map](https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/map.png)
+<p align="center">
+  <img alt="Light" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/front.png" width="45%">
+&nbsp; &nbsp;
+  <img alt="Dark" src="https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/map.png" width="45%">
+</p>
 
 ![Image of EDA](https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/EDA.png) ![Image of Race](https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/images/Race.png)
 
