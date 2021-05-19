@@ -3,6 +3,7 @@
 [Link to Website](https://6859-sp21.github.io/final-project-fatal-shooting-by-us-police/)
 
 [Link to Video Teaser](https://www.youtube.com/watch?v=FX0CYhiVTME&feature=youtu.be)
+
 [Link to Paper](https://drive.google.com/file/d/1kHmS7OeB1_yqae8iJnVJQ0yAZU1O5Zlr/view?usp=sharing)
 
 
